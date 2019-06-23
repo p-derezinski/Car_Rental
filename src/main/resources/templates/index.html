@@ -23,6 +23,16 @@
     <a th:href="@{/contact}">KONTAKT</a>
 </div>
 
+<div th:each="cars : ${listOfCars}">
+    <h3 th:text="${cars.getBrand()}">
+        Brand
+    </h3>
+    <p th:text = "${'Model: ' + cars.getModel()}">Model</p>
+    <p th:text = "${'Type: ' + cars.getType()}">Type</p>
+    <p th:text = "${'Year: ' + cars.getYear()}">Year</p>
+    <hr>
+</div>
+
 </body>
 
 </html>
