@@ -8,9 +8,9 @@
 <body>
 
 <div>
-    <a>START</a>
-    <a>ZALOGUJ</a>
-    <a>REJESTRACJA</a>
+    <a th:href="@{/}">START</a>
+    <a th:href="@{/login}">ZALOGUJ</a>
+    <a th:href="@{/register}">REJESTRACJA</a>
     <P>Wybierz oddział:</P>
     <FORM>
         <SELECT>
@@ -20,7 +20,7 @@
             <OPTION>SZCZECIN</OPTION>
         </SELECT>
     </FORM>
-    <p>KONTAKT</p>
+    <a th:href="@{/contact}">KONTAKT</a>
 </div>
 
 </body>
