@@ -16,8 +16,8 @@ import javax.persistence.Id;
 public class Users {
 
     @Id                                               // PRIMARY KEY
-    @GeneratedValue(strategy = GenerationType.AUTO)   // AUTO_INCREMENT
-    private Long id;
+//    @GeneratedValue(strategy = GenerationType.AUTO)   // AUTO_INCREMENT
+    private Long id = 2L;
     private String firstname;
     private String lastname;
     private String email;

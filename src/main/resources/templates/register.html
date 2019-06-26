@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th=”http://www.thymeleaf.org”>
+
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -7,6 +8,70 @@
 <body>
 
 To jest strona, gdzie będzie się odbywała rejestracja
+
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+
+                <form th:action="@{/register}" th:method="post" th:object="${users}">
+                    <div class="control-group">
+                        <div class="form-group floating-label-form-group controls">
+                            <label>First name</label>
+                            <input th:field="*{firstname}" type="text" class="form-control" placeholder="First name">
+                            <span th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}" class="text-danger">error-message</span>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="form-group floating-label-form-group controls">
+                            <label>Last name</label>
+                            <input th:field="*{lastname}" type="text" class="form-control" placeholder="Last name">
+<!--                            <span th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}" class="text-danger">error-message</span>-->
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="form-group floating-label-form-group controls">
+                            <label>Email</label>
+                            <input th:field="*{email}" type="text" class="form-control" placeholder="Email">
+<!--                            <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger">error-message</span>-->
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="form-group floating-label-form-group controls">
+                            <label>Age</label>
+                            <input th:field="*{age}" type="text" class="form-control" placeholder="Age">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="form-group floating-label-form-group controls">
+                            <label>City</label>
+                            <input th:field="*{city}" type="text" class="form-control" placeholder="City">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="form-group floating-label-form-group controls">
+                            <label>Street</label>
+                            <input th:field="*{street}" type="text" class="form-control" placeholder="Street">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="form-group floating-label-form-group controls">
+                            <label>Password</label>
+                            <input th:field="*{password}" type="password" class="form-control" placeholder="Password">
+<!--                            <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="text-danger">error-message</span>-->
+                        </div>
+                    </div>
+                    <br>
+                    <div id="success"></div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Register new user</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</article>
 
 </body>
 </html>
