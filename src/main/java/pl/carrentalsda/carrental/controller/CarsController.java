@@ -24,4 +24,12 @@ public class CarsController {
         model.addAttribute("listOfCars", listOfCars);
         return "index";
     }
+
+    @GetMapping("/statistics")
+    public String showStatistics(Model model) {
+        List<Cars> listOfCars = carsService.getAllCars();
+        int numberOfCars = listOfCars.size();
+        model.addAttribute("numberOfCars", numberOfCars);
+        return "statistics";
+    }
 }
