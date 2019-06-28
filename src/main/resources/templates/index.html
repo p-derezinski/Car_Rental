@@ -24,7 +24,7 @@
             <h1 ><a href="/">Car Rental</a></h1>
             <nav >
                 <ul class="sf-menu dropdown">
-                    <li class="selected"><a href="index.html">Home</a></li>
+                    <li class="selected"><a th:href="@{/}">Home</a></li>
                     <li>
                         <a href="#">Branches</a>
                         <ul>
@@ -34,12 +34,13 @@
                             <li><a href="#">Warszawa</a></li>
                         </ul>
                     </li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a th:href="@{/statistics}">Statistics</a></li>
+                    <li><a th:href="@{/contact}">Contact</a></li>
                     <li>
                         <a href="#">Log in/Register</a>
                         <ul>
-                            <li><a href="login.html">Log in</a></li>
-                            <li><a href="register.html">Register</a></li>
+                            <li><a th:href="@{/login}">Log in</a></li>
+                            <li><a th:href="@{/register}">Register</a></li>
                         </ul>
                     </li>
                 </ul>
