@@ -54,7 +54,7 @@
             <div class="intro-content" style="float: left; background-color: rgba(105, 155, 186, 0.0)">
                 <table>
                     <tr>
-                        <td style="font-weight: bold; color: #022633; font-size: large"> CAR RENTAL - choose the car of your dreams - Best Price Guarantee - Pick Car Rental. We'll pick you up.                </td>
+                        <td style="font-weight: bold; width: max-content; color: honeydew; font-size: large; background-color: rgba(51, 51, 51, 0.7)"> CAR RENTAL - choose the car of your dreams - Best Price Guarantee - Pick Car Rental. We'll pick you up.                </td>
 
                     </tr>
 
@@ -62,15 +62,44 @@
             </div>
 
             <div  class="intro-content" style="float: left; background-color: rgba(105, 155, 186, 0.9)">
-                <table style="color: #004d66;" th:each="cars : ${listOfCars}">
+                <table style="color: #00264f; font-weight: bold; background-color: rgba(0, 96, 128, 0.7)">
+                    <tr>
+                        <td>
+                            BRAND
+                        </td>
+                        <td>
+                            MODEL
+                        </td>
+                        <td>
+                            TYPE
+                        </td>
+                        <td>
+                            YEAR
+                        </td>
+                        <td>
+                            COLOR
+                        </td>
+                        <td>
+                            MILEAGE
+                        </td>
+                        <td>
+                            PRICE
+                        </td>
+                        <td>
+                            ACTION
+                        </td>
+                    </tr>
+                </table>
+                <table style="color: #00264d;" th:each="cars : ${listOfCars}">
                     <tr>
                         <td th:text="${cars.getBrand()}">Brand</td>
-                        <td th:text = "${'Model: ' + cars.getModel()}">Model</td>
-                        <td th:text = "${'Type: ' + cars.getType()}">Type</td>
-                        <td th:text = "${'Year: ' + cars.getYear()}">Year</td>
-                        <td th:text = "${'Color: ' + cars.getColor()}">Color</td>
-                        <td th:text = "${'Mileage: ' + cars.getMileage()}">Mileage</td>
-                        <td th:text = "${'Price: ' + cars.getPrice() + 'PLN'}">Price</td>
+                        <td th:text = "${cars.getModel()}">Model</td>
+                        <td th:text = "${cars.getType()}">Type</td>
+                        <td th:text = "${cars.getYear()}">Year</td>
+                        <td th:text = "${cars.getColor()}">Color</td>
+                        <td th:text = "${cars.getMileage()}">Mileage</td>
+                        <td th:text = "${cars.getPrice() + 'PLN'}">Price</td>
+                        <td><button style="background-color: darkolivegreen; border-color: seagreen; font-weight: bold">BOOK</button></td>
                     </tr>
 
                 </table>
