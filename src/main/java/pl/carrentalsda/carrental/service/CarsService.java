@@ -18,4 +18,12 @@ public class CarsService {
     public List<Cars> getAllCars() {
         return carsRepository.findAll();
     }
+
+    public List<Cars> getAllCarsFromYearsBetween() {
+        return carsRepository.findAllByYearBetween(2010, 2017);
+    }
+
+    public List<Cars> getAllCarsByBrand(String brand) {
+        return carsRepository.findAllByBrand(brand);
+    }
 }

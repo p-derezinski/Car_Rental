@@ -4,10 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -16,8 +15,8 @@ import javax.persistence.Id;
 public class Users {
 
     @Id                                               // PRIMARY KEY
-//    @GeneratedValue(strategy = GenerationType.AUTO)   // AUTO_INCREMENT
-    private Long id = 2L;
+    @GeneratedValue(strategy = GenerationType.AUTO)   // AUTO_INCREMENT
+    private Long id;
     private String firstname;
     private String lastname;
     private String email;
@@ -34,5 +33,21 @@ public class Users {
         this.city = city;
         this.street = street;
         this.password = password;
+    }
+
+    // RELACJA N:M
+    @ManyToMany(
+            cascade = CascadeType.ALL,                          // pełna rekursywność
+            fetch = FetchType.EAGER                             // zachłanne pobieranie rekordów
+    )
+    @JoinTable(
+            name = "users_role",                                 // nazwa tabelki
+            joinColumns = @JoinColumn(name = "users_id"),        // klucz uzytkownika
+            inverseJoinColumns = @JoinColumn(name = "role_id")   // klucz roli
+    )
+    private Set<Role> roles = new HashSet<>();
+
+    public void addRole(Role role){
+        this.roles.add(role);
     }
 }
