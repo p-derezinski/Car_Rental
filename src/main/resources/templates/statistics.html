@@ -78,7 +78,18 @@
                         <td style="width: 380px">The number of Toyota cars:</td>
                         <td style="width: 15px" th:text = "${numberOfCars_4}">Number of Audi cars</td>
                     </tr>
+                    <tr>
+                        <td style="width: 380px">The number of users:</td>
+                        <td style="width: 15px" th:text = "${numberOfUsers}">Number of users</td>
+                    </tr>
 
+                </table>
+                <table th:each="users : ${listOfUsers}">
+                    <tr>
+                        <td th:text="${users.getFirstname()}">Firstname</td>
+                        <td th:text="${users.getLastname()}">Lastname</td>
+                        <td th:text="${users.getEmail()}">Email</td>
+                    </tr>
                 </table>
             </div>
         </div>

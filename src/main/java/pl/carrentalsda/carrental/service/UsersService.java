@@ -8,6 +8,8 @@ import pl.carrentalsda.carrental.model.Users;
 import pl.carrentalsda.carrental.repository.RoleRepository;
 import pl.carrentalsda.carrental.repository.UsersRepository;
 
+import java.util.List;
+
 @Service
 public class UsersService {
 
@@ -35,5 +37,9 @@ public class UsersService {
         // zapis do bazy danych
         System.out.println(user);
         usersRepository.save(user);
+    }
+
+    public List<Users> getAllUsers() {
+        return usersRepository.findAll();
     }
 }

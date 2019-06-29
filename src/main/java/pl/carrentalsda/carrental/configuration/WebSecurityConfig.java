@@ -55,12 +55,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.inMemoryAuthentication()
+
+                .withUser("admin@admin.pl")
+
+                .password(bCryptPasswordEncoder.encode("admin12345"))
+
+                .roles("ADMIN");
         auth
                 .jdbcAuthentication()
                 // SQL dla logowania użytkownika po adresie email i haśle
                 .usersByUsernameQuery("SELECT u.email, u.password FROM users u WHERE u.email = ?")
                 // SQL dla przypisania uprawnień dla zalogowanego użytkownika
-                .authoritiesByUsernameQuery("SELECT u.email, r.role_name FROM users u JOIN users_role ur ON ur.users_id = u.id JOIN role r ON ur.role_id = r.id WHERE u.email = ?")
+//                .authoritiesByUsernameQuery("SELECT u.email, r.role_name FROM users u JOIN users_role ur ON ur.users_id = u.id JOIN role r ON ur.role_id = r.id WHERE u.email = ?")
                 // wynik logowania
                 .dataSource(dataSource)
                 // szyfrowanie hasła
