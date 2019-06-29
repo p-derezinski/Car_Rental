@@ -1,6 +1,7 @@
 package pl.carrentalsda.carrental.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import pl.carrentalsda.carrental.controller.dto.UsersDto;
 import pl.carrentalsda.carrental.model.Users;
@@ -20,6 +21,7 @@ public class UsersService {
     }
 
     public void saveUser(UsersDto usersDto){
+        String encodedPassword = new BCryptPasswordEncoder().encode(usersDto.getPassword());
         Users user =
                 new Users(usersDto.getFirstname(),
                         usersDto.getLastname(),
@@ -27,7 +29,7 @@ public class UsersService {
                         usersDto.getAge(),
                         usersDto.getCity(),
                         usersDto.getStreet(),
-                        usersDto.getPassword());
+                        encodedPassword);
         // dodajemy rolę użytkownika
         user.addRole(roleRepository.getOne(1L));
         // zapis do bazy danych
