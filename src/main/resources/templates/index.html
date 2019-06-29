@@ -1,5 +1,7 @@
 <!doctype html>
-<html xmlns:th=”http://www.thymeleaf.org”>
+
+<html xmlns:th=”http://www.thymeleaf.org” xmlns:c="http://www.w3.org/1999/XSL/Transform">
+
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -16,6 +18,7 @@
 
 </head>
 <body>
+<c:set var="status" value="${cars.getStatus}"/>
 <div id="container">
     <header style="background-color:rgba(105, 155, 186, 0.4)">
         <div class="width">
@@ -84,6 +87,9 @@
                             MILEAGE
                         </td>
                         <td>
+                            STATUS
+                        </td>
+                        <td>
                             PRICE
                         </td>
                         <td>
@@ -99,10 +105,18 @@
                         <td th:text="${cars.getYear()}">Year</td>
                         <td th:text="${cars.getColor()}">Color</td>
                         <td th:text="${cars.getMileage()}">Mileage</td>
+
+                        <td th:switch="${cars.getStatus()}">
+                            <span th:case="0" style="color: limegreen; font-weight: bold">Available</span>
+                            <span th:case="1" style="color: red; font-weight: bold">Rented</span>
+                        </td>
                         <td th:text="${cars.getPrice() + 'PLN'}">Price</td>
-                        <td>
-                            <button style="background-color: #33cc00; width: 60px; border-color: #208000; font-weight: bold">
+                        <td th:switch="${cars.getStatus()}">
+                            <button th:case="0" style="background-color: #33cc00; width: 70px; border-color: #208000; font-weight: bold">
                                 BOOK
+                            </button>
+                            <button th:case="1" style="background-color: red; width: 70px; border-color: #990000; font-weight: bold">
+                                RETURN
                             </button>
                         </td>
                     </tr>
