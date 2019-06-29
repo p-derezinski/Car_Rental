@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="../css/styles.css" type="text/css"/>
 
 
-
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0"/>
 
 
@@ -20,9 +19,9 @@
 <body>
 <div id="container">
     <header style="background-color:rgba(105, 155, 186, 0.4)">
-        <div class="width" >
-            <h1 ><a href="/">Car Rental</a></h1>
-            <nav >
+        <div class="width">
+            <h1><a href="/">Car Rental</a></h1>
+            <nav>
                 <ul class="sf-menu dropdown">
                     <li class="selected"><a th:href="@{/}">Home</a></li>
                     <li>
@@ -49,19 +48,22 @@
         </div>
         <div class="clear"></div>
     </header>
-    <div id="intro" >
+    <div id="intro">
         <div class="width">
             <div class="intro-content" style="float: left; background-color: rgba(105, 155, 186, 0.0)">
                 <table>
                     <tr>
-                        <td style="font-weight: bold; width: max-content; color: honeydew; font-size: large; background-color: rgba(51, 51, 51, 0.7)"> CAR RENTAL - choose the car of your dreams - Best Price Guarantee - Pick Car Rental. We'll pick you up.                </td>
+                        <td style="font-weight: bold; width: max-content; color: honeydew; font-size: large; background-color: rgba(51, 51, 51, 0.7)">
+                            CAR RENTAL - choose the car of your dreams - Best Price Guarantee - Pick Car Rental. We'll
+                            pick you up.
+                        </td>
 
                     </tr>
 
                 </table>
             </div>
 
-            <div  class="intro-content" style="float: left; background-color: rgba(105, 155, 186, 0.9)">
+            <div class="intro-content" style="float: left; background-color: rgba(105, 155, 186, 0.9)">
                 <table style="color: #00264f; font-weight: bold; background-color: rgba(0, 96, 128, 0.7)">
                     <tr>
                         <td>
@@ -93,25 +95,29 @@
                 <table style="color: #00264d;" th:each="cars : ${listOfCars}">
                     <tr>
                         <td th:text="${cars.getBrand()}">Brand</td>
-                        <td th:text = "${cars.getModel()}">Model</td>
-                        <td th:text = "${cars.getType()}">Type</td>
-                        <td th:text = "${cars.getYear()}">Year</td>
-                        <td th:text = "${cars.getColor()}">Color</td>
-                        <td th:text = "${cars.getMileage()}">Mileage</td>
-                        <td th:text = "${cars.getPrice() + 'PLN'}">Price</td>
-                        <td><button style="background-color: darkolivegreen; border-color: seagreen; font-weight: bold">BOOK</button></td>
+                        <td th:text="${cars.getModel()}">Model</td>
+                        <td th:text="${cars.getType()}">Type</td>
+                        <td th:text="${cars.getYear()}">Year</td>
+                        <td th:text="${cars.getColor()}">Color</td>
+                        <td th:text="${cars.getMileage()}">Mileage</td>
+                        <td th:text="${cars.getPrice() + 'PLN'}">Price</td>
+                        <td>
+                            <button style="background-color: #33cc00; width: 60px; border-color: #208000; font-weight: bold">
+                                BOOK
+                            </button>
+                        </td>
                     </tr>
 
                 </table>
             </div>
         </div>
     </div>
+</div>
+<footer style="position: fixed; bottom: 0%; width: 100%; height: 32px">
+    <div class="footer-bottom">
+        <p>&copy; Car Rental Company by PD&MT :)</p>
     </div>
-    <footer style="position: fixed; bottom: 0%; width: 100%; height: 32px">
-        <div class="footer-bottom">
-            <p >&copy; Car Rental Company by PD&MT :)</p>
-        </div>
-    </footer>
+</footer>
 </div>
 <script type="text/javascript" src="../js/jquery.js"></script>
 <script type="text/javascript" src="../js/slider.js"></script>
