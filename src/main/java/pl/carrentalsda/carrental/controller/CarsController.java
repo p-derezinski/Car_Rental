@@ -4,18 +4,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import pl.carrentalsda.carrental.controller.dto.UsersDto;
 import pl.carrentalsda.carrental.model.Cars;
+import pl.carrentalsda.carrental.model.Users;
 import pl.carrentalsda.carrental.service.CarsService;
+import pl.carrentalsda.carrental.service.UsersService;
 
 import java.util.List;
 
 @Controller
 public class CarsController {
+
     CarsService carsService;
+    UsersService usersService;
 
     @Autowired
-    public CarsController(CarsService carsService) {
+    public CarsController(CarsService carsService, UsersService usersService) {
         this.carsService = carsService;
+        this.usersService = usersService;
     }
 
     @GetMapping("/")
@@ -43,6 +49,12 @@ public class CarsController {
         List<Cars> listOfSelectedCars_4 = carsService.getAllCarsByBrand("Toyota");
         int numberOfCars_4 = listOfSelectedCars_4.size();
         model.addAttribute("numberOfCars_4", numberOfCars_4);
+
+        List<Users> listOfUsers = usersService.getAllUsers();
+//        model.addAttribute("users", new UsersDto());
+        model.addAttribute("listOfUsers", listOfUsers);
+        int numberOfUsers = listOfUsers.size();
+        model.addAttribute("numberOfUsers", numberOfUsers);
 
         return "statistics";
     }
