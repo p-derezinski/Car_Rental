@@ -118,7 +118,7 @@
                         </td>
                         <td th:text="${cars.getPrice() + 'PLN'}">Price</td>
                         <td th:switch="${cars.getStatus()}">
-                            <a th:href="@{/reservation}">
+                            <a th:href="@{'/reservation/' + ${cars.id}}">
                             <button th:case="0"  style="background-color: #33cc00; width: 70px; border-color: #208000; font-weight: bold">
                                 BOOK
                             </button>
