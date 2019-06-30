@@ -12,6 +12,8 @@ import java.util.List;
 public interface CarsRepository extends JpaRepository<Cars, Long> {
     List<Cars> findAllById(Long id);
 
+    Cars findFirstById(Long id);
+
     List<Cars> findAllByYearBetween(int low, int high);
 
     List<Cars> findAllByBrand(String brand);

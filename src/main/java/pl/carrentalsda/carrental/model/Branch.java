@@ -19,7 +19,7 @@ public class Branch {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private BranchEnum branchEnum;
+    private BranchEnum branch_enum;
 
 
 //    // RELACJA 1:N
