@@ -33,8 +33,10 @@ public class CarsController {
         return "index";
     }
 
+
     @GetMapping("/statistics")
-    public String showStatistics(Model model) {
+    public String showStatistics(Model model, Authentication auth) {
+        model.addAttribute("auth", auth);
 
         List<Cars> listOfCars = carsService.getAllCars();
         int numberOfCars = listOfCars.size();
