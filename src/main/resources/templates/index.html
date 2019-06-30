@@ -36,11 +36,15 @@
                         </ul>
                     </li>
                     <li><a th:href="@{/statistics}">Statistics</a></li>
-                    <a class="navbar-brand text-warning" th:if="${auth == null}">Not logged in</a>
-                    <a class="navbar-brand text-success" th:if="${auth != null}" th:text="${'Hello ' + auth.getPrincipal().getUsername()}">Login in</a>
                     <li><a th:href="@{/contact}">Contact</a></li>
                     <li>
-                        <a href="#">Log in/Register</a>
+
+                    <p th:if="${auth != null}" th:text="${'Hello ' + auth.getPrincipal().getUsername()}" style="font-weight: bold; color: royalblue">Login in</p>
+
+                    </li>
+
+                    <li th:if="${auth == null}">
+                        <a  href="#">Log in/Register</a>
                         <ul>
                             <li><a th:href="@{/login}">Log in</a></li>
                             <li><a th:href="@{/register}">Register</a></li>
@@ -114,9 +118,11 @@
                         </td>
                         <td th:text="${cars.getPrice() + 'PLN'}">Price</td>
                         <td th:switch="${cars.getStatus()}">
-                            <button th:case="0" style="background-color: #33cc00; width: 70px; border-color: #208000; font-weight: bold">
+                            <a th:href="@{/reservation}">
+                            <button th:case="0"  style="background-color: #33cc00; width: 70px; border-color: #208000; font-weight: bold">
                                 BOOK
                             </button>
+                            </a>
                             <button th:case="1" style="background-color: red; width: 70px; border-color: #990000; font-weight: bold">
                                 RETURN
                             </button>
