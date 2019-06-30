@@ -1,6 +1,7 @@
 package pl.carrentalsda.carrental.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -51,7 +52,8 @@ public class UserController {
 
     // wejście na stronę kontakt
     @GetMapping("/contact")
-    public String contact(){
+    public String contact(Model model, Authentication auth){
+        model.addAttribute("auth", auth);
         return "contact";
     }
 
