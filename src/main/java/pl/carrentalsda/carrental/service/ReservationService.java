@@ -60,4 +60,8 @@ public class ReservationService {
         reservationRepository.save(reservation);
     }
 
+    public void updateCarInRepository(Cars car) {
+        carsRepository.save(car);
+    }
+
 }
