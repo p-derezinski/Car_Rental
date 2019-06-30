@@ -26,6 +26,7 @@ public class Users {
     private String city;
     private String street;
     private String password;
+    private boolean enabled = true;
 
     public Users(String firstname, String lastname, String email, int age, String city, String street, String password) {
         this.firstname = firstname;

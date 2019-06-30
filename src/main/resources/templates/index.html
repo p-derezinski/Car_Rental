@@ -36,6 +36,8 @@
                         </ul>
                     </li>
                     <li><a th:href="@{/statistics}">Statistics</a></li>
+                    <a class="navbar-brand text-warning" th:if="${auth == null}">Not logged in</a>
+                    <a class="navbar-brand text-success" th:if="${auth != null}" th:text="${'Hello ' + auth.getPrincipal().getUsername()}">Login in</a>
                     <li><a th:href="@{/contact}">Contact</a></li>
                     <li>
                         <a href="#">Log in/Register</a>

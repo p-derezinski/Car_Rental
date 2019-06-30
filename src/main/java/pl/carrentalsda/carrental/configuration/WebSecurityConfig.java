@@ -27,6 +27,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 // .antMatchers(/url) -> wymaga autoryzacji
                 // .hasAnyAuthority("uprawnienie") -> dla określonego uprawnienia
 
+//                .antMatchers("/updatepost/**")
+//                .hasAnyAuthority("ROLE_CLIENT")
+
                 // pozostałe URL udostępnij dla każdego
                 .anyRequest().permitAll()
                 .and()
@@ -65,8 +68,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         auth
                 .jdbcAuthentication()
                 // SQL dla logowania użytkownika po adresie email i haśle
-                .usersByUsernameQuery("SELECT u.email, u.password FROM users u WHERE u.email = ?")
+                .usersByUsernameQuery("SELECT u.email, u.password, u.enabled FROM users u WHERE u.email = ?")
                 // SQL dla przypisania uprawnień dla zalogowanego użytkownika
+                .authoritiesByUsernameQuery("SELECT u.email, 'ROLE_CLIENT' FROM users u WHERE u.email = ?")
 //                .authoritiesByUsernameQuery("SELECT u.email, r.role_name FROM users u JOIN users_role ur ON ur.users_id = u.id JOIN role r ON ur.role_id = r.id WHERE u.email = ?")
                 // wynik logowania
                 .dataSource(dataSource)
