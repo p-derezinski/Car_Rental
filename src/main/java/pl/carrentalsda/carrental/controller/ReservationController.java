@@ -44,15 +44,16 @@ public class ReservationController {
 
     // obsługa kliknięcia potwierdzenia rezerwacji samochodu
     @PostMapping("/reservation")
-    public String processReservation(@ModelAttribute("carConfirmed") @Valid Cars car,
+    public String processReservation(@ModelAttribute("carToView") @Valid Cars car,
                                      BindingResult bindingResult,
                                      Authentication auth,
                                      Model model) {
         String email = ((UserDetails)auth.getPrincipal()).getUsername();
         Long car_id = car.getId();
         reservationService.createReservation(email, car_id);
-        car.setStatus(1);
-        reservationService.updateCarInRepository(car);
+        Cars carToUpdate = carsService.getFirstCarById(car_id);
+        carToUpdate.setStatus(1);
+        reservationService.updateCarInRepository(carToUpdate);
         return "redirect:/";
     }
 
