@@ -1,0 +1,107 @@
+<!doctype html>
+<html xmlns:th=”http://www.thymeleaf.org”>
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Car Rental</title>
+
+
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/reset.css" type="text/css"/>
+    <link rel="stylesheet" href="../css/styles.css" type="text/css"/>
+
+
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0"/>
+
+
+</head>
+<body>
+<div id="container">
+    <header style="background-color:rgba(105, 155, 186, 0.4)">
+        <div class="width">
+            <h1><a href="/">Car Rental</a></h1>
+            <nav>
+                <ul class="sf-menu dropdown">
+                    <li><a th:href="@{/}">Home</a></li>
+                    <li>
+                        <a href="#">Branches</a>
+                        <ul>
+                            <li><a href="#">Kraków</a></li>
+                            <li><a href="#">Poznań</a></li>
+                            <li><a href="#">Gdańsk</a></li>
+                            <li><a href="#">Warszawa</a></li>
+                        </ul>
+                    </li>
+                    <li><a th:href="@{/statistics}">Statistics</a></li>
+                    <li><a th:href="@{/contact}">Contact</a></li>
+                    <li>
+
+                        <p th:if="${auth != null}" th:text="${'Hello ' + auth.getPrincipal().getUsername()}"
+                           style="font-weight: bold; color: royalblue">Login in</p>
+
+                    </li>
+
+                    <li th:if="${auth == null}">
+                        <a href="#">Log in/Register</a>
+                        <ul>
+                            <li><a th:href="@{/login}">Log in</a></li>
+                            <li><a th:href="@{/register}">Register</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="clear"></div>
+            </nav>
+        </div>
+        <div class="clear"></div>
+    </header>
+    <div id="intro">
+        <div class="width">
+
+            <div class="intro-content" style="float: left; background-color: rgba(105, 155, 186, 0.9)">
+                <table style="color: #00264f; font-weight: bold; background-color: rgba(0, 96, 128, 0.7)">
+                    <tr>
+                        <td style="width: 254px;">
+                            CLIENT'S SECTION
+                        </td>
+
+                    </tr>
+                </table>
+                <table>
+                    <tr>
+                        <td style="color: #00264d">First name:</td>
+                        <td style="color: #f0f0f0; font-weight: bold" th:text="${loggedUser.getFirstname()}"> FIRST NAME</td>
+                    </tr>
+                    <tr>
+                        <td style="color: #00264d">Last name:</td>
+                        <td style="color: #f0f0f0; font-weight: bold" th:text="${loggedUser.getLastname()}"> LAST NAME</td>
+                    </tr>
+
+<!--TODO - może być więcej info o użytkowniku-->
+<!--TODO - lista wcześniejszych rezerwacji-->
+
+                </table>
+
+<!--                <p th:if="${auth == null}">Not logged in</p>-->
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--<li class="nav-item">-->
+<a class="nav-link" th:if="${auth != null}" th:href="@{/logout}">Logout</a>
+<!--</li>-->
+
+<footer style="position: fixed; bottom: 0%; width: 100%; height: 32px">
+    <div class="footer-bottom">
+        <p>&copy; Car Rental Company by PD&MT :)</p>
+    </div>
+</footer>
+</div>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/slider.js"></script>
+<script type="text/javascript" src="../js/superfish.js"></script>
+<script type="text/javascript" src="../js/custom.js"></script>
+</body>
+</html>

@@ -51,7 +51,6 @@ public class ReservationService {
     }
 
     public void createReservation(String email, Long car_id) {
-        // TODO - analogicznie do addPost z PostService
         Reservation reservation = new Reservation();
         Users user = usersRepository.findFirstByEmail(email);
         reservation.setUser(user);

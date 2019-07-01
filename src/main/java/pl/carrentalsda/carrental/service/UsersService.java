@@ -42,4 +42,8 @@ public class UsersService {
     public List<Users> getAllUsers() {
         return usersRepository.findAll();
     }
+
+    public Users getFirstUserByEmail(String email) {
+        return usersRepository.findFirstByEmail(email);
+    }
 }

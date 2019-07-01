@@ -27,8 +27,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 // .antMatchers(/url) -> wymaga autoryzacji
                 // .hasAnyAuthority("uprawnienie") -> dla określonego uprawnienia
 
-//                .antMatchers("/updatepost/**")
-//                .hasAnyAuthority("ROLE_CLIENT")
+                .antMatchers("/clientPage")
+                .hasAnyAuthority("ROLE_CLIENT")
 
                 // pozostałe URL udostępnij dla każdego
                 .anyRequest().permitAll()
