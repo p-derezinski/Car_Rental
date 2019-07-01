@@ -11,6 +11,8 @@ import pl.carrentalsda.carrental.repository.CarsRepository;
 import pl.carrentalsda.carrental.repository.ReservationRepository;
 import pl.carrentalsda.carrental.repository.UsersRepository;
 
+import java.util.List;
+
 @Service
 public class ReservationService {
 
@@ -63,4 +65,7 @@ public class ReservationService {
         carsRepository.save(car);
     }
 
+    public List<Reservation> getAllReservationsByUser(Users user) {
+        return reservationRepository.findAllByUser(user);
+    }
 }

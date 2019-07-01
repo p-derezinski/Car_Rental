@@ -76,13 +76,33 @@
                         <td style="color: #00264d">Last name:</td>
                         <td style="color: #f0f0f0; font-weight: bold" th:text="${loggedUser.getLastname()}"> LAST NAME</td>
                     </tr>
-
 <!--TODO - może być więcej info o użytkowniku-->
-<!--TODO - lista wcześniejszych rezerwacji-->
-
                 </table>
 
-<!--                <p th:if="${auth == null}">Not logged in</p>-->
+                <div class="intro-content" style="float: left; background-color: rgba(105, 155, 186, 0.9)">
+                    <table style="color: #00264f; font-weight: bold; background-color: rgba(0, 96, 128, 0.7)">
+                        <tr>
+                            <td>
+                                RESERVATION DATE
+                            </td>
+                            <td>
+                                CAR BRAND
+                            </td>
+                            <td>
+                                CAR MODEL
+                            </td>
+
+                        </tr>
+                    </table>
+                    <table style="color: #00264d;" th:each="reservation : ${listOfReservations}">
+                        <tr>
+                            <td th:text="${reservation.getReservation_date()}">Reservation date</td>
+                            <td th:text="${reservation.getCars().getBrand()}">Car brand</td>
+                            <td th:text="${reservation.getCars().getModel()}">Car model</td>
+                        </tr>
+                        <!--TODO - może być jakiś ładny naglówek, że to taka lista, a jak nie było rezerwacji, to też ładne info-->
+                    </table>
+                </div>
 
             </div>
         </div>
