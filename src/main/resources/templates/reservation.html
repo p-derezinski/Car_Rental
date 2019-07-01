@@ -1,14 +1,3 @@
-<!--<body>-->
-
-<!--Jeden samochód do wyświetlenia-->
-
-<!--<table>-->
-<!--    <tr>-->
-<!--        <td th:text="${carToView.getBrand()}">Firstname</td>-->
-<!--        <td th:text="${carToView.getModel()}">Lastname</td>-->
-<!--    </tr>-->
-<!--</table>-->
-
 <!doctype html>
 <html xmlns:th=”http://www.thymeleaf.org”>
 
@@ -115,7 +104,8 @@
                         <td>
                             <form th:action="@{/reservation}" th:method="post" th:object="${carToView}">
                                 <input th:field="*{id}" type="hidden">
-                                <button type="submit" style="font-weight: bold; background-color: #8CB2CA; border-color: #4C82A4; width: 152px; height: 35px; horiz-align: right; ">
+                                <button type="submit"
+                                        style="font-weight: bold; background-color: #8CB2CA; border-color: #4C82A4; width: 152px; height: 35px; horiz-align: right; ">
                                     CONFIRM
                                 </button>
                             </form>
@@ -127,17 +117,13 @@
         </div>
     </div>
 </div>
-
-<!--<li class="nav-item">-->
-<a class="nav-link" th:if="${auth != null}" th:href="@{/logout}">Logout</a>
-<!--</li>-->
-
 <footer style="position: fixed; bottom: 0%; width: 100%; height: 32px">
     <div class="footer-bottom">
         <p>&copy; Car Rental Company by PD&MT :)</p>
     </div>
 </footer>
 </div>
+<div th:if="${auth != null}" th:text="${'Hello ' + auth.getPrincipal().getUsername()}" class="hello">Hello</div>
 <script type="text/javascript" src="../js/jquery.js"></script>
 <script type="text/javascript" src="../js/slider.js"></script>
 <script type="text/javascript" src="../js/superfish.js"></script>
