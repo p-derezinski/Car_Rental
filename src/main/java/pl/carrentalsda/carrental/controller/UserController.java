@@ -50,6 +50,14 @@ public class UserController {
         return "login";
     }
 
+    // błędne logowanie
+    @GetMapping("/errorLogin")
+    public String errorLogin(Model model) {
+        String error = "error";
+        model.addAttribute("error", error);
+        return "login";
+    }
+
     // wejście na stronę kontakt
     @GetMapping("/contact")
     public String contact(Model model, Authentication auth){
