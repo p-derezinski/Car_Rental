@@ -11,6 +11,8 @@ import pl.carrentalsda.carrental.repository.CarsRepository;
 import pl.carrentalsda.carrental.repository.ReservationRepository;
 import pl.carrentalsda.carrental.repository.UsersRepository;
 
+import java.util.List;
+
 @Service
 public class ReservationService {
 
@@ -51,7 +53,6 @@ public class ReservationService {
     }
 
     public void createReservation(String email, Long car_id) {
-        // TODO - analogicznie do addPost z PostService
         Reservation reservation = new Reservation();
         Users user = usersRepository.findFirstByEmail(email);
         reservation.setUser(user);
@@ -64,4 +65,7 @@ public class ReservationService {
         carsRepository.save(car);
     }
 
+    public List<Reservation> getAllReservationsByUser(Users user) {
+        return reservationRepository.findAllByUser(user);
+    }
 }

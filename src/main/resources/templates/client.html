@@ -62,68 +62,63 @@
                 <table style="color: #00264f; font-weight: bold; background-color: rgba(0, 96, 128, 0.7)">
                     <tr>
                         <td style="width: 254px;">
-                            YOUR RESERVATION
+                            CLIENT'S SECTION
                         </td>
 
                     </tr>
                 </table>
                 <table>
                     <tr>
-                        <td style="color: #00264d">Brand:</td>
-                        <td style="color: #f0f0f0; font-weight: bold" th:text="${carToView.getBrand()}"> BRAND</td>
+                        <td style="color: #00264d">First name:</td>
+                        <td style="color: #f0f0f0; font-weight: bold" th:text="${loggedUser.getFirstname()}"> FIRST NAME</td>
                     </tr>
                     <tr>
-                        <td style="color: #00264d">Model:</td>
-                        <td style="color: #f0f0f0; font-weight: bold" th:text="${carToView.getModel()}"> MODEL</td>
+                        <td style="color: #00264d">Last name:</td>
+                        <td style="color: #f0f0f0; font-weight: bold" th:text="${loggedUser.getLastname()}"> LAST NAME</td>
                     </tr>
-                    <tr>
-                        <td style="color: #00264d">Type:</td>
-                        <td style="color: #f0f0f0; font-weight: bold" th:text="${carToView.getType()}"> TYPE</td>
-                    </tr>
-                    <tr>
-                        <td style="color: #00264d">Year:</td>
-                        <td style="color: #f0f0f0; font-weight: bold" th:text="${carToView.getYear()}"> YEAR</td>
-                    </tr>
-                    <tr>
-                        <td style="color: #00264d">Color:</td>
-                        <td style="color: #f0f0f0; font-weight: bold" th:text="${carToView.getColor()}"> COLOR</td>
-                    </tr>
-                    <tr>
-                        <td style="color: #00264d">Mileage:</td>
-                        <td style="color: #f0f0f0; font-weight: bold" th:text="${carToView.getMileage()}"> MILEAGE</td>
-                    </tr>
-                    <tr>
-                        <td style="color: #00264d">Price:</td>
-                        <td style="color: #990000; font-weight: bold" th:text="${carToView.getPrice() + ' PLN'}"> PRICE
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-
-                        </td>
-                        <td>
-                            <form th:action="@{/reservation}" th:method="post" th:object="${carToView}">
-                                <input th:field="*{id}" type="hidden">
-                                <button type="submit"
-                                        style="font-weight: bold; background-color: #8CB2CA; border-color: #4C82A4; width: 152px; height: 35px; horiz-align: right; ">
-                                    CONFIRM
-                                </button>
-                            </form>
-                        </td>
-                    </tr>
-
+<!--TODO - może być więcej info o użytkowniku-->
                 </table>
+
+                <div class="intro-content" style="float: left; background-color: rgba(105, 155, 186, 0.9)">
+                    <table style="color: #00264f; font-weight: bold; background-color: rgba(0, 96, 128, 0.7)">
+                        <tr>
+                            <td>
+                                RESERVATION DATE
+                            </td>
+                            <td>
+                                CAR BRAND
+                            </td>
+                            <td>
+                                CAR MODEL
+                            </td>
+
+                        </tr>
+                    </table>
+                    <table style="color: #00264d;" th:each="reservation : ${listOfReservations}">
+                        <tr>
+                            <td th:text="${reservation.getReservation_date()}">Reservation date</td>
+                            <td th:text="${reservation.getCars().getBrand()}">Car brand</td>
+                            <td th:text="${reservation.getCars().getModel()}">Car model</td>
+                        </tr>
+                        <!--TODO - może być jakiś ładny naglówek, że to taka lista, a jak nie było rezerwacji, to też ładne info-->
+                    </table>
+                </div>
+
             </div>
         </div>
     </div>
 </div>
+
+<!--<li class="nav-item">-->
+<a class="nav-link" th:if="${auth != null}" th:href="@{/logout}">Logout</a>
+<!--</li>-->
+
 <footer style="position: fixed; bottom: 0%; width: 100%; height: 32px">
     <div class="footer-bottom">
         <p>&copy; Car Rental Company by PD&MT :)</p>
     </div>
 </footer>
 </div>
-<div th:if="${auth != null}" th:text="${'Hello ' + auth.getPrincipal().getUsername()}" class="hello">Hello</div>
 <script type="text/javascript" src="../js/jquery.js"></script>
 <script type="text/javascript" src="../js/slider.js"></script>
 <script type="text/javascript" src="../js/superfish.js"></script>

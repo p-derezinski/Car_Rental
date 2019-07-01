@@ -34,6 +34,7 @@
                         </ul>
                     </li>
                     <li><a th:href="@{/statistics}">Statistics</a></li>
+                    <li><a th:href="@{/clientPage}">Client's section</a></li>
                     <li><a th:href="@{/contact}">Contact</a></li>
                     <li class="selected">
                         <a href="#">Log in/Register</a>
@@ -57,8 +58,11 @@
                 <table style="color: #00264f; font-weight: bold; background-color: rgba(0, 96, 128, 0.7)">
 
                     <tr>
-                        <td>
+                        <td class="login">
                             LOGIN
+                        </td>
+                        <td th:if="${error != null}" class="incorrect">
+                            LOGIN DATA IS INCORRECT!
                         </td>
 
                     </tr>
@@ -93,10 +97,6 @@
             </div>
         </div>
     </div>
-</div>
-
-<div th:if="${error != null}">
-    <p>Login data is incorrect.</p>
 </div>
 
 <footer style="position: fixed; bottom: 0%; width: 100%; height: 32px">
