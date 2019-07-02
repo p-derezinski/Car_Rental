@@ -59,9 +59,9 @@
             <div class="intro-content" style="float: left; background-color: rgba(105, 155, 186, 0.0)">
                 <table>
                     <tr>
-                        <td style="font-weight: bold; width: max-content; color: honeydew; font-size: large; background-color: rgba(51, 51, 51, 0.7)">
-                            CAR RENTAL - choose the car of your dreams - Best Price Guarantee - Pick Car Rental. We'll
-                            pick you up.
+                        <td style=" width: max-content; color: honeydew; font-size: large; background-color: rgba(51, 51, 51, 0.7)">
+                            Type something to search the table for brand, model, branch...
+                            <input style="height: 20px" id="myInput" type="text" placeholder="Search..">
                         </td>
 
                     </tr>
@@ -70,7 +70,8 @@
             </div>
 
             <div class="intro-content" style="float: left; background-color: rgba(105, 155, 186, 0.9)">
-                <table style="color: #00264f; font-weight: bold; background-color: rgba(0, 96, 128, 0.7)">
+                <table>
+                    <thead style="color: #00264f; font-weight: bold; background-color: rgba(0, 96, 128, 0.7)">
                     <tr>
                         <td>
                             BRAND
@@ -91,6 +92,9 @@
                             MILEAGE
                         </td>
                         <td>
+                            BRANCH
+                        </td>
+                        <td>
                             STATUS
                         </td>
                         <td>
@@ -100,8 +104,8 @@
                             ACTION
                         </td>
                     </tr>
-                </table>
-                <table style="color: #00264d;" th:each="cars : ${listOfCars}">
+                    </thead>
+                    <tbody id="myTable" style="color: #00264d;" th:each="cars : ${listOfCars}">
                     <tr>
                         <td th:text="${cars.getBrand()}">Brand</td>
                         <td th:text="${cars.getModel()}">Model</td>
@@ -109,12 +113,13 @@
                         <td th:text="${cars.getYear()}">Year</td>
                         <td th:text="${cars.getColor()}">Color</td>
                         <td th:text="${cars.getMileage()}">Mileage</td>
+                        <td th:text="${cars.getBranch()}">Branch</td>
 
                         <td th:switch="${cars.getStatus()}">
                             <span th:case="0" style="color: limegreen; font-weight: bold">Available</span>
                             <span th:case="1" style="color: red; font-weight: bold">Rented</span>
                         </td>
-                        <td th:text="${cars.getPrice() + 'PLN'}">Price</td>
+                        <td th:text="${cars.getPrice() + ' PLN'}">Price</td>
                         <td th:switch="${cars.getStatus()}">
                             <a th:href="@{'/reservation/' + ${cars.id}}">
                             <button th:case="0"  style="background-color: #33cc00; width: 70px; border-color: #208000; font-weight: bold">
@@ -126,7 +131,7 @@
                             </button>
                         </td>
                     </tr>
-
+                    </tbody>
                 </table>
             </div>
         </div>
@@ -145,5 +150,17 @@
 <script type="text/javascript" src="../js/slider.js"></script>
 <script type="text/javascript" src="../js/superfish.js"></script>
 <script type="text/javascript" src="../js/custom.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $("#myInput").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $("#myTable tr").filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+</script>
+
 </body>
 </html>

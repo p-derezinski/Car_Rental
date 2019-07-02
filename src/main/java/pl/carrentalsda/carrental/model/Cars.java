@@ -24,6 +24,7 @@ public class Cars {
     private int year;
     private String color;
     private int mileage;
+    private String branch;
     private int status;
     private int price;
 
@@ -33,6 +34,7 @@ public class Cars {
                  int year,
                  String color,
                  int mileage,
+                 String branch,
                  int status,
                  int price) {
         this.brand = brand;
@@ -41,6 +43,7 @@ public class Cars {
         this.year = year;
         this.color = color;
         this.mileage = mileage;
+        this.branch = branch;
         this.status = status;
         this.price = price;
     }
