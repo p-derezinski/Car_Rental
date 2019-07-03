@@ -68,33 +68,32 @@
 
                         <tr>
                             <td style="width: 200px">First name:</td>
-                            <td style="width: 150px"><input th:field="*{firstname}" type="text" class="form-control"
-                                                            placeholder="First name">
+                            <td style="width: 150px"><input th:field="*{firstname}" type="text" class="form-control" placeholder="First name" required>
                             </td>
                         </tr>
                         <tr>
                             <td style="width: 200px">Last name:</td>
-                            <td style="width: 150px"><input th:field="*{lastname}" type="text" class="form-control" placeholder="Last name"></td>
+                            <td style="width: 150px"><input th:field="*{lastname}" type="text" class="form-control" placeholder="Last name" required></td>
                         </tr>
                         <tr>
                             <td style="width: 200px">E-mail:</td>
-                            <td style="width: 150px"><input th:field="*{email}" type="text" class="form-control" placeholder="Email"></td>
+                            <td style="width: 150px"><input th:field="*{email}" type="email" class="form-control" placeholder="Email" required></td>
                         </tr>
                         <tr>
                             <td style="width: 200px">Age:</td>
-                            <td style="width: 150px"><input th:field="*{age}" type="text" class="form-control" placeholder="Age"></td>
+                            <td style="width: 150px"><input th:field="*{age}" type="number" class="form-control" placeholder="Age" min="1" max="125" required></td>
                         </tr>
                         <tr>
                             <td style="width: 200px">City:</td>
-                            <td style="width: 150px"><input th:field="*{city}" type="text" class="form-control" placeholder="City"></td>
+                            <td style="width: 150px"><input th:field="*{city}" type="text" class="form-control" placeholder="City" required></td>
                         </tr>
                         <tr>
                             <td style="width: 200px">Street:</td>
-                            <td style="width: 150px"><input th:field="*{street}" type="text" class="form-control" placeholder="Street"></td>
+                            <td style="width: 150px"><input th:field="*{street}" type="text" class="form-control" placeholder="Street" required></td>
                         </tr>
                         <tr>
                             <td style="width: 200px">Password:</td>
-                            <td style="width: 150px"><input th:field="*{password}" type="password" class="form-control" placeholder="Password"></td>
+                            <td style="width: 150px"><input th:field="*{password}" type="password" class="form-control" placeholder="Password" required></td>
                         </tr>
                         <tr><td> </td>
                             <td style="width: 200px"><button type="submit" style="font-weight: bold; background-color: #8CB2CA; border-color: #4C82A4; width: 165px; height: 35px; horiz-align: right">Register new user</button></td>
