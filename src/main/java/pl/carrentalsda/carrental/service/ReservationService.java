@@ -68,4 +68,8 @@ public class ReservationService {
     public List<Reservation> getAllReservationsByUser(Users user) {
         return reservationRepository.findAllByUser(user);
     }
+
+    public List<Reservation> getAllReservations() {
+        return reservationRepository.findAll();
+    }
 }
