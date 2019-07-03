@@ -33,8 +33,6 @@ th, td {
 }
 
 th {
-	color: #666;
-	background: #ccc none repeat-x scroll left top;
 }
 
 td {
@@ -873,3 +871,21 @@ td.incorrect {
 	/*padding: 40px;*/
 	font-size: 14px;
 }
+.sorttable__th {
+	cursor: pointer; }
+.sorttable__th--asc {
+	position: relative; }
+.sorttable__th--asc:after {
+	font: 16px / 16px FontAwesome;
+	content: '\f106';
+	position: absolute;
+	top: 18px;
+	right: 5px; }
+.sorttable__th--desc {
+	position: relative; }
+.sorttable__th--desc:after {
+	font: 16px / 16px FontAwesome;
+	content: '\f107';
+	position: absolute;
+	top: 18px;
+	right: 5px; }
