@@ -78,12 +78,29 @@
                     </tr>
                     <tr>
                         <td style="width: 380px">The number of Toyota cars:</td>
-                        <td style="width: 15px" th:text="${numberOfCars_4}">Number of Audi cars</td>
+                        <td style="width: 15px" th:text="${numberOfCars_4}">Number of Toyota cars</td>
                     </tr>
                     <tr>
                         <td style="width: 380px">The number of users:</td>
                         <td style="width: 15px" th:text="${numberOfUsers}">Number of users</td>
                     </tr>
+                    <tr>
+                        <td style="width: 380px">The number of reservations:</td>
+                        <td style="width: 15px" th:text="${numberOfReservations}">Number of reservations</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 380px">Total income of the Car Rental Company:</td>
+                        <td style="width: 15px" th:text="${totalIncome}">Total income</td>
+                    </tr>
+
+                    <table th:each="instance : ${userAndNumberOfReservations}">
+                        <tr>
+                            <td th:text="${instance.key.getFirstname()}">Firstname</td>
+                            <td th:text="${instance.key.getLastname()}">Lastname</td>
+                            <td th:text="${instance.key.getEmail()}">Email</td>
+                            <td th:text="${instance.value}">Number</td>
+                        </tr>
+                    </table>
 
                 </table>
             </div>

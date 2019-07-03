@@ -77,7 +77,9 @@ public class CarsController {
         for (Users user : listOfUsers) {
             List<Reservation> listOfUserReservations = reservationService.getAllReservationsByUser(user);
             int numberOfUserReservations = listOfUserReservations.size();
-            userAndNumberOfReservations.put(user, numberOfUserReservations);
+            if (numberOfUserReservations > 0) {
+                userAndNumberOfReservations.put(user, numberOfUserReservations);
+            }
         }
         model.addAttribute("userAndNumberOfReservations", userAndNumberOfReservations);
 
