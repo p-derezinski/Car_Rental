@@ -5,24 +5,29 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import pl.carrentalsda.carrental.controller.dto.UsersDto;
 import pl.carrentalsda.carrental.model.Cars;
+import pl.carrentalsda.carrental.model.Reservation;
 import pl.carrentalsda.carrental.model.Users;
 import pl.carrentalsda.carrental.service.CarsService;
+import pl.carrentalsda.carrental.service.ReservationService;
 import pl.carrentalsda.carrental.service.UsersService;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class CarsController {
 
     CarsService carsService;
     UsersService usersService;
+    ReservationService reservationService;
 
     @Autowired
-    public CarsController(CarsService carsService, UsersService usersService) {
+    public CarsController(CarsService carsService, UsersService usersService, ReservationService reservationService) {
         this.carsService = carsService;
         this.usersService = usersService;
+        this.reservationService = reservationService;
     }
 
     @GetMapping("/")
@@ -55,10 +60,28 @@ public class CarsController {
         model.addAttribute("numberOfCars_4", numberOfCars_4);
 
         List<Users> listOfUsers = usersService.getAllUsers();
-//        model.addAttribute("users", new UsersDto());
         model.addAttribute("listOfUsers", listOfUsers);
         int numberOfUsers = listOfUsers.size();
         model.addAttribute("numberOfUsers", numberOfUsers);
+
+        List<Reservation> listOfReservations = reservationService.getAllReservations();
+        int numberOfReservations = listOfReservations.size();
+        model.addAttribute("numberOfReservations", numberOfReservations);
+        int totalIncome = 0;
+        for (Reservation reservation : listOfReservations) {
+            totalIncome += reservation.getCars().getPrice();
+        }
+        model.addAttribute("totalIncome", totalIncome);
+
+        Map<Users, Integer> userAndNumberOfReservations = new HashMap<>();
+        for (Users user : listOfUsers) {
+            List<Reservation> listOfUserReservations = reservationService.getAllReservationsByUser(user);
+            int numberOfUserReservations = listOfUserReservations.size();
+            if (numberOfUserReservations > 0) {
+                userAndNumberOfReservations.put(user, numberOfUserReservations);
+            }
+        }
+        model.addAttribute("userAndNumberOfReservations", userAndNumberOfReservations);
 
         return "statistics";
     }

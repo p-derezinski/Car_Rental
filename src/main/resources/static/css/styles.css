@@ -3,6 +3,8 @@
 body {
 	background:  #ECECEC;
 	background-image: url('../img/ferrari.jpg');
+	background-attachment: fixed;
+	background-repeat: no-repeat;
 	background-size: 100%;
 	background-size: 100%;
 	background-repeat: no-repeat;
@@ -31,8 +33,6 @@ th, td {
 }
 
 th {
-	color: #666;
-	background: #ccc none repeat-x scroll left top;
 }
 
 td {
@@ -870,4 +870,33 @@ td.incorrect {
 	/*text-align: right;*/
 	/*padding: 40px;*/
 	font-size: 14px;
+}
+.sorttable__th {
+	cursor: pointer; }
+.sorttable__th--asc {
+	position: relative; }
+.sorttable__th--asc:after {
+	font: 16px / 16px FontAwesome;
+	content: '\f106';
+	position: absolute;
+	top: 18px;
+	right: 5px; }
+.sorttable__th--desc {
+	position: relative; }
+.sorttable__th--desc:after {
+	font: 16px / 16px FontAwesome;
+	content: '\f107';
+	position: absolute;
+	top: 18px;
+	right: 5px; }
+.footer{
+    background-color: rgba(51, 51, 51, 0.7);
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    height: 17px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    color: #999999;
 }

@@ -18,32 +18,6 @@ $1(document).ready(function(){
 	});
 });
 
-$("#krakow").click(function () {
-	var rows = $("#myTable").find("tr").hide();
-	rows.filter(":contains('Kraków')").show();
-});
-
-$(function(){
-	$('#krakow').live('click', function() {
-		$("#myInput").val($(this).html());
-	});
-});
-
-$("#poznan").click(function () {
-	var rows = $("#myTable").find("tr").hide();
-	rows.filter(":contains('Kraków')").show();
-});
-
-$("#warszawa").click(function () {
-	var rows = $("#myTable").find("tr").hide();
-	rows.filter(":contains('Kraków')").show();
-});
-
-$("#gdansk").click(function () {
-	var rows = $("#myTable").find("tr").hide();
-	rows.filter(":contains('Kraków')").show();
-});
-
 (function() {
 
 	var table = document.querySelector('#myTable'),
