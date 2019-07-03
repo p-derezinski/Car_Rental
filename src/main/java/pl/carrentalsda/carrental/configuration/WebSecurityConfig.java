@@ -2,6 +2,7 @@ package pl.carrentalsda.carrental.configuration;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -28,7 +29,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 // .hasAnyAuthority("uprawnienie") -> dla określonego uprawnienia
 
                 .antMatchers("/clientPage")
-                .hasAnyAuthority("ROLE_CLIENT")
+                .hasAnyAuthority("ROLE_CLIENT", "ROLE_EMPLOYEE")
+                .antMatchers(HttpMethod.POST,"/reservation")
+                .hasAnyAuthority("ROLE_CLIENT", "ROLE_EMPLOYEE")
 
                 // pozostałe URL udostępnij dla każdego
                 .anyRequest().permitAll()
@@ -70,8 +73,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 // SQL dla logowania użytkownika po adresie email i haśle
                 .usersByUsernameQuery("SELECT u.email, u.password, u.enabled FROM users u WHERE u.email = ?")
                 // SQL dla przypisania uprawnień dla zalogowanego użytkownika
-                .authoritiesByUsernameQuery("SELECT u.email, 'ROLE_CLIENT' FROM users u WHERE u.email = ?")
-//                .authoritiesByUsernameQuery("SELECT u.email, r.role_name FROM users u JOIN users_role ur ON ur.users_id = u.id JOIN role r ON ur.role_id = r.id WHERE u.email = ?")
+//                .authoritiesByUsernameQuery("SELECT u.email, 'ROLE_CLIENT' FROM users u WHERE u.email = ?")
+                .authoritiesByUsernameQuery("SELECT u.email, r.role_name FROM users u JOIN users_role ur ON ur.users_id = u.id JOIN role r ON ur.role_id = r.id WHERE u.email = ?")
                 // wynik logowania
                 .dataSource(dataSource)
                 // szyfrowanie hasła
