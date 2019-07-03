@@ -889,3 +889,14 @@ td.incorrect {
 	position: absolute;
 	top: 18px;
 	right: 5px; }
+.footer{
+    background-color: rgba(51, 51, 51, 0.7);
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    height: 17px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    color: #999999;
+}

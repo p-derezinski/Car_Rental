@@ -41,7 +41,7 @@
                     <li><a th:href="@{/contact}">Contact</a></li>
 
                     <li th:if="${auth == null}">
-                        <a  href="#">Log in/Register</a>
+                        <a href="#">Log in/Register</a>
                         <ul>
                             <li><a th:href="@{/login}">Log in</a></li>
                             <li><a th:href="@{/register}">Register</a></li>
@@ -72,7 +72,8 @@
 
             <div class="intro-content" style="float: left; background-color: rgba(105, 155, 186, 0.9)">
                 <table class="table table-striped" id="myTable">
-                    <thead class="thead-inverse" style="color: #00264f; font-weight: bold; background-color: rgba(0, 96, 128, 0.7)">
+                    <thead class="thead-inverse"
+                           style="color: #00264f; font-weight: bold; background-color: rgba(0, 96, 128, 0.7)">
                     <tr>
                         <th class="sorttable__th">
                             BRAND
@@ -123,11 +124,13 @@
                         <td th:text="${cars.getPrice() + ' PLN'}">Price</td>
                         <td th:switch="${cars.getStatus()}">
                             <a th:href="@{'/reservation/' + ${cars.id}}">
-                            <button th:case="0"  style="background-color: #33cc00; width: 70px; border-color: #208000; font-weight: bold">
-                                BOOK
-                            </button>
+                                <button th:case="0"
+                                        style="background-color: #33cc00; width: 70px; border-color: #208000; font-weight: bold">
+                                    BOOK
+                                </button>
                             </a>
-                            <button th:case="1" style="background-color: red; width: 70px; border-color: #990000; font-weight: bold">
+                            <button th:case="1"
+                                    style="background-color: red; width: 70px; border-color: #990000; font-weight: bold">
                                 RETURN
                             </button>
                         </td>
@@ -139,12 +142,7 @@
     </div>
 </div>
 
-<footer style="position: fixed; bottom: 0%; width: 100%; height: 32px">
-    <div class="footer-bottom">
-        <p>&copy; Car Rental Company by PD&MT :)</p>
-    </div>
-</footer>
-</div>
+<div class="footer">&copy; Car Rental Company by PD&MT :)</div>
 <div th:if="${auth != null}" th:text="${'Hello ' + auth.getPrincipal().getUsername()}" class="hello">Hello</div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
@@ -152,8 +150,6 @@
 </script>
 <script type="text/javascript" src="../js/jquery.js"></script>
 <script type="text/javascript" src="../js/slider.js"></script>
-<script type="text/javascript" src="../js/filter.js"></script>
-<script type="text/javascript" src="../js/sort.js"></script>
 <script type="text/javascript" src="../js/superfish.js"></script>
 <script type="text/javascript" src="../js/custom.js"></script>
 
