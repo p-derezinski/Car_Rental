@@ -18,6 +18,8 @@ $1(document).ready(function(){
 	});
 });
 
+
+
 (function() {
 
 	var table = document.querySelector('#myTable'),

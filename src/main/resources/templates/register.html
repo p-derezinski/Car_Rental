@@ -7,12 +7,16 @@
     <title>Car Rental</title>
 
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/lumen/bootstrap.min.css">
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/reset.css" type="text/css"/>
     <link rel="stylesheet" href="../css/styles.css" type="text/css"/>
 
 
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0"/>
+
+
+    <!--    <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">-->
 
 
 </head>
@@ -94,10 +98,19 @@
                         </tr>
                         <tr>
                             <td style="width: 200px">Password:</td>
-                            <td style="width: 150px"><input th:field="*{password}" type="password" class="form-control" placeholder="Password" required></td>
+                            <td style="width: 150px"><input th:field="*{password}" type="password" id="example-progress" class="form-control" placeholder="Password" required></td>
                         </tr>
                         <tr><td> </td>
-                            <td style="width: 200px"><button type="submit" style="font-weight: bold; background-color: #8CB2CA; border-color: #4C82A4; width: 165px; height: 35px; horiz-align: right">Register new user</button></td>
+                            <td>
+                                <div id="progress-container"></div>
+                            </td>
+                        </tr>
+                        <tr><td> </td>
+                            <td style="width: 200px; padding: 0px"><button type="submit" class="button-log-reg">Register new user</button></td>
+                        </tr>
+                        <tr>
+                            <td> </td>
+                            <td><span style="position: relative; bottom: 90px; left: 34px; font-size: 12px; color: gray">PASSWORD STRENGTH</span></td>
                         </tr>
 
                     </form>
@@ -110,10 +123,54 @@
 
 <div class="footer">&copy; Car Rental Company by PD&MT :)</div>
 </div>
+<br><br><br>
 <script type="text/javascript" src="../js/jquery.js"></script>
 <script type="text/javascript" src="../js/slider.js"></script>
 <script type="text/javascript" src="../js/superfish.js"></script>
 <script type="text/javascript" src="../js/custom.js"></script>
+
+
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+<script>
+    var $2 = jQuery.noConflict();
+</script>
+<script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="../js/password-score.js"></script>
+
+
+<script src="/js/bootstrap-strength-meter.js"></script>
+<script>
+    $2(document).ready(function() {
+
+        $2('#example-progress').strengthMeter('progressBar', {
+
+            container: $2('#progress-container'),
+
+        base: 80,
+
+        hierarchy: {
+
+            '0': 'progress-bar-danger',
+
+            '25': 'progress-bar-warning',
+
+            '50': 'progress-bar-success'
+
+        },
+
+        passwordScore: {
+
+            options: [],
+
+            append: true
+
+        }
+
+    });
+
+    });
+
+</script>
 </body>
 </html>
 

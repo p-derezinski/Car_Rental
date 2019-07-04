@@ -148,6 +148,7 @@ form input, form select, form textarea {
 	background-color:#fff;
 	font-family: 'Source Sans Pro', 'sans-serif';
 	font-size: 0.9em;
+	height: 15px;
 }
 
 form input.formbutton {
@@ -899,4 +900,17 @@ td.incorrect {
     font-size: 14px;
     font-weight: bold;
     color: #999999;
+}
+.button-log-reg {
+	font-weight: bold;
+	position: relative;
+	left: 7px;
+	bottom: 8px;
+	background-color: #8CB2CA;
+	border-radius: 6px;
+	color: #330000;
+	border-color: #4C82A4;
+	width: 185px;
+	height: 30px;
+	horiz-align: right
 }
