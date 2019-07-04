@@ -57,4 +57,17 @@ public class ReservationController {
         return "redirect:/";
     }
 
+    // obsługa zwrotu auta przez pracownika
+    @PostMapping("/return/{id}")
+    public String processReturn(@PathVariable("id") Long id, @ModelAttribute("cars") @Valid Cars car,
+                                     BindingResult bindingResult,
+                                     Authentication auth,
+                                     Model model) {
+//        Long car_id = car.getId();
+//        Cars carToUpdate = carsService.getFirstCarById(car_id);
+        Cars carToUpdate = carsService.getFirstCarById(id);
+        carToUpdate.setStatus(0);
+        reservationService.updateCarInRepository(carToUpdate);
+        return "redirect:/";
+    }
 }
