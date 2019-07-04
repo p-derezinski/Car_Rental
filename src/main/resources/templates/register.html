@@ -36,13 +36,14 @@
                     <li><a th:href="@{/statistics}">Statistics</a></li>
                     <li><a th:href="@{/clientPage}">Client's section</a></li>
                     <li><a th:href="@{/contact}">Contact</a></li>
-                    <li class="selected">
+                    <li th:if="${auth == null}" class="selected">
                         <a href="#">Log in/Register</a>
                         <ul>
                             <li><a th:href="@{/login}">Log in</a></li>
                             <li><a th:href="@{/register}">Register</a></li>
                         </ul>
                     </li>
+                    <li><a th:if="${auth != null}" th:href="@{/logout}">Logout</a></li>
                 </ul>
                 <div class="clear"></div>
             </nav>
