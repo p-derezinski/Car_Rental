@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import pl.carrentalsda.carrental.controller.dto.UsersDto;
+import pl.carrentalsda.carrental.model.Role;
 import pl.carrentalsda.carrental.model.Users;
 import pl.carrentalsda.carrental.repository.RoleRepository;
 import pl.carrentalsda.carrental.repository.UsersRepository;
@@ -45,5 +46,9 @@ public class UsersService {
 
     public Users getFirstUserByEmail(String email) {
         return usersRepository.findFirstByEmail(email);
+    }
+
+    public Role getRole(Long id) {
+        return roleRepository.getOne(id);
     }
 }
