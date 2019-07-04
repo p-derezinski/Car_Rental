@@ -27,6 +27,10 @@ public class CarsService {
         return carsRepository.findAllByBrand(brand);
     }
 
+    public List<Cars> getAllCarsByBranch(String branch) {
+        return carsRepository.findAllByBranch(branch);
+    }
+
     public Cars getFirstCarById(Long id) {
         return carsRepository.findFirstById(id);
     }

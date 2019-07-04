@@ -51,6 +51,24 @@ public class CarsController {
         return "index";
     }
 
+    @GetMapping("/krakow")
+    public String getKrakowCars(Model model, Authentication auth) {
+        model.addAttribute("auth", auth);
+
+        List<Cars> listOfKrakowCars = carsService.getAllCarsByBranch("krakow");
+        model.addAttribute("listOfCars", listOfKrakowCars);
+
+        if (auth != null) {
+            String email = ((UserDetails)auth.getPrincipal()).getUsername();
+            Users loggedUser = usersService.getFirstUserByEmail(email);
+            Role userRole = usersService.getRole(2L);
+            if (loggedUser.getRoles().contains(userRole)) {
+                model.addAttribute("employee", true);
+            }
+        }
+
+        return "index";
+    }
     @GetMapping("/statistics")
     public String showStatistics(Model model, Authentication auth) {
         model.addAttribute("auth", auth);
