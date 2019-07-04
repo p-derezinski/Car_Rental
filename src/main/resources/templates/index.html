@@ -50,6 +50,8 @@
                     <li><a th:if="${auth != null}" th:href="@{/logout}">Logout</a></li>
                 </ul>
                 <div class="clear"></div>
+                <div class="hello" th:if="${auth != null}" th:text="${'Hello ' + auth.getPrincipal().getUsername()}">Hello</div>
+
             </nav>
         </div>
         <div class="clear"></div>
@@ -148,7 +150,7 @@
 </div>
 
 <div class="footer">&copy; Car Rental Company by PD&MT :)</div>
-<div th:if="${auth != null}" th:text="${'Hello ' + auth.getPrincipal().getUsername()}" class="hello">Hello</div>
+<!--<div th:if="${auth != null}" th:text="${'Hello ' + auth.getPrincipal().getUsername()}" class="hello">Hello</div>-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
     var $1 = jQuery.noConflict();
