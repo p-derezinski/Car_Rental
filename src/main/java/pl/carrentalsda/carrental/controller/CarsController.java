@@ -39,14 +39,7 @@ public class CarsController {
         List<Cars> listOfCars = carsService.getAllCars();
         model.addAttribute("listOfCars", listOfCars);
 
-        if (auth != null) {
-            String email = ((UserDetails)auth.getPrincipal()).getUsername();
-            Users loggedUser = usersService.getFirstUserByEmail(email);
-            Role userRole = usersService.getRole(2L);
-            if (loggedUser.getRoles().contains(userRole)) {
-                model.addAttribute("employee", true);
-            }
-        }
+        isItAnEmployee(model, auth);
 
         return "index";
     }
@@ -58,17 +51,22 @@ public class CarsController {
         List<Cars> listOfKrakowCars = carsService.getAllCarsByBranch("krakow");
         model.addAttribute("listOfCars", listOfKrakowCars);
 
+        isItAnEmployee(model, auth);
+
+        return "index";
+    }
+
+    private void isItAnEmployee(Model model, Authentication auth) {
         if (auth != null) {
-            String email = ((UserDetails)auth.getPrincipal()).getUsername();
+            String email = ((UserDetails) auth.getPrincipal()).getUsername();
             Users loggedUser = usersService.getFirstUserByEmail(email);
             Role userRole = usersService.getRole(2L);
             if (loggedUser.getRoles().contains(userRole)) {
                 model.addAttribute("employee", true);
             }
         }
-
-        return "index";
     }
+
     @GetMapping("/statistics")
     public String showStatistics(Model model, Authentication auth) {
         model.addAttribute("auth", auth);
