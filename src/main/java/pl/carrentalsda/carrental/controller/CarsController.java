@@ -6,6 +6,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import pl.carrentalsda.carrental.model.Cars;
 import pl.carrentalsda.carrental.model.Reservation;
 import pl.carrentalsda.carrental.model.Role;
@@ -65,6 +68,23 @@ public class CarsController {
                 model.addAttribute("employee", true);
             }
         }
+    }
+
+    @GetMapping("/statisticsForm")
+    public String showStatisticsForm(Model model, Authentication auth) {
+        model.addAttribute("auth", auth);
+        return "statisticsForm";
+    }
+
+    @PostMapping("/statisticsBrand")
+    public String showStatisticsBrand(Model model, Authentication auth, @RequestParam(name = "brand", defaultValue = "test") String brand) {
+        model.addAttribute("auth", auth);
+
+        List<Cars> listOfSelectedCars = carsService.getAllCarsByBrand(brand);
+        int numberOfCars = listOfSelectedCars.size();
+        model.addAttribute("numberOfCars", numberOfCars);
+
+        return "statisticsForm";
     }
 
     @GetMapping("/statistics")
