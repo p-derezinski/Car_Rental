@@ -110,25 +110,44 @@ public class CarsController {
         return "statisticsForm";
     }
 
-    @PostMapping("/statisticsBrand")
-    public String showStatisticsBrand(Model model, Authentication auth, @RequestParam(name = "brand", defaultValue = "test") String brand) {
-        model.addAttribute("auth", auth);
+//    @PostMapping("/statisticsBrand")
+//    public String showStatisticsBrand(Model model, Authentication auth, @RequestParam(name = "brand", defaultValue = "test") String brand) {
+//        model.addAttribute("auth", auth);
+//
+//        List<Cars> listOfSelectedCars = carsService.getAllCarsByBrand(brand);
+//        int numberOfCars = listOfSelectedCars.size();
+//        model.addAttribute("numberOfCars", numberOfCars);
+//
+//        return "statisticsForm";
+//    }
+//
+//    @PostMapping("/statisticsYears")
+//    public String showStatisticsYears(Model model, Authentication auth,
+//                                      @RequestParam(name = "yearFrom") int yearFrom,
+//                                      @RequestParam(name = "yearTo") int yearTo) {
+//        model.addAttribute("auth", auth);
+//
+//        if (yearFrom <= yearTo) {
+//            List<Cars> listOfSelectedCars = carsService.getAllCarsFromYearsBetween(yearFrom, yearTo);
+//            int numberOfCars = listOfSelectedCars.size();
+//            model.addAttribute("numberOfCars", numberOfCars);
+//        } else {
+//            String numberOfCars = "Invalid search parameters";
+//            model.addAttribute("numberOfCars", numberOfCars);
+//        }
+//
+//        return "statisticsForm";
+//    }
 
-        List<Cars> listOfSelectedCars = carsService.getAllCarsByBrand(brand);
-        int numberOfCars = listOfSelectedCars.size();
-        model.addAttribute("numberOfCars", numberOfCars);
-
-        return "statisticsForm";
-    }
-
-    @PostMapping("/statisticsYears")
-    public String showStatisticsYears(Model model, Authentication auth,
-                                      @RequestParam(name = "yearFrom") int yearFrom,
-                                      @RequestParam(name = "yearTo") int yearTo) {
+    @PostMapping("/statisticsSearch")
+    public String showStatisticsSearch(Model model, Authentication auth,
+                                       @RequestParam(name = "brand", defaultValue = "empty") String brand,
+                                       @RequestParam(name = "yearFrom", defaultValue = "1900") int yearFrom,
+                                       @RequestParam(name = "yearTo", defaultValue = "2099") int yearTo) {
         model.addAttribute("auth", auth);
 
         if (yearFrom <= yearTo) {
-            List<Cars> listOfSelectedCars = carsService.getAllCarsFromYearsBetween(yearFrom, yearTo);
+            List<Cars> listOfSelectedCars = carsService.getAllCardByBrandAndYearsBetween(brand, yearFrom, yearTo);
             int numberOfCars = listOfSelectedCars.size();
             model.addAttribute("numberOfCars", numberOfCars);
         } else {

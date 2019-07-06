@@ -38,4 +38,11 @@ public class CarsService {
     public Cars getFirstCarById(Long id) {
         return carsRepository.findFirstById(id);
     }
+
+    public List<Cars> getAllCardByBrandAndYearsBetween(String brand, int yearFrom, int yearTo) {
+        if (brand.equals("empty")) {
+            return carsRepository.findAllByYearBetween(yearFrom, yearTo);
+        }
+        return carsRepository.findAllByBrandAndYearBetween(brand, yearFrom, yearTo);
+    }
 }
