@@ -21,7 +21,7 @@ import java.util.List;
 @Controller
 public class UserController {
 
-    // pole do wstrzykniecia
+    // pola do wstrzyknięcia
     UsersService usersService;
     ReservationService reservationService;
 
@@ -63,13 +63,6 @@ public class UserController {
         String error = "error";
         model.addAttribute("error", error);
         return "login";
-    }
-
-    // wejście na stronę kontakt
-    @GetMapping("/contact")
-    public String contact(Model model, Authentication auth){
-        model.addAttribute("auth", auth);
-        return "contact";
     }
 
     // wejście na stronę klienta
