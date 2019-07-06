@@ -121,6 +121,24 @@ public class CarsController {
         return "statisticsForm";
     }
 
+    @PostMapping("/statisticsYears")
+    public String showStatisticsYears(Model model, Authentication auth,
+                                      @RequestParam(name = "yearFrom") int yearFrom,
+                                      @RequestParam(name = "yearTo") int yearTo) {
+        model.addAttribute("auth", auth);
+
+        if (yearFrom <= yearTo) {
+            List<Cars> listOfSelectedCars = carsService.getAllCarsFromYearsBetween(yearFrom, yearTo);
+            int numberOfCars = listOfSelectedCars.size();
+            model.addAttribute("numberOfCars", numberOfCars);
+        } else {
+            String numberOfCars = "Invalid search parameters";
+            model.addAttribute("numberOfCars", numberOfCars);
+        }
+
+        return "statisticsForm";
+    }
+
     @GetMapping("/statistics")
     public String showStatistics(Model model, Authentication auth) {
         model.addAttribute("auth", auth);
