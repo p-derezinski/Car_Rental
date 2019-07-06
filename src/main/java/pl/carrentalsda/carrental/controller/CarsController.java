@@ -58,6 +58,40 @@ public class CarsController {
 
         return "index";
     }
+    @GetMapping("/poznan")
+    public String getPoznanCars(Model model, Authentication auth) {
+        model.addAttribute("auth", auth);
+
+        List<Cars> listOfPoznanCars = carsService.getAllCarsByBranch("poznan");
+        model.addAttribute("listOfCars", listOfPoznanCars);
+
+        isItAnEmployee(model, auth);
+
+        return "index";
+    }
+    @GetMapping("/gdansk")
+    public String getGdanskCars(Model model, Authentication auth) {
+        model.addAttribute("auth", auth);
+
+        List<Cars> listOfGdanskCars = carsService.getAllCarsByBranch("gdansk");
+        model.addAttribute("listOfCars", listOfGdanskCars);
+
+        isItAnEmployee(model, auth);
+
+        return "index";
+    }
+    @GetMapping("/warszawa")
+    public String getWarszawaCars(Model model, Authentication auth) {
+        model.addAttribute("auth", auth);
+
+        List<Cars> listOfWarszawaCars = carsService.getAllCarsByBranch("warszawa");
+        model.addAttribute("listOfCars", listOfWarszawaCars);
+
+        isItAnEmployee(model, auth);
+
+        return "index";
+    }
+
 
     private void isItAnEmployee(Model model, Authentication auth) {
         if (auth != null) {

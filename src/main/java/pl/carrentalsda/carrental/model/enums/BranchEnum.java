@@ -4,6 +4,7 @@ public enum BranchEnum {
 
     POZNAN,
     WARSZAWA,
-    GDANSK
+    GDANSK,
+    KRAKOW
 
 }
