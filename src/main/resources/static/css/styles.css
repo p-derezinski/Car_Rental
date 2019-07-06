@@ -917,10 +917,10 @@ td.incorrect {
 	horiz-align: right
 }
 .logo {
-	position: absolute;
-	top: 1px;
-	left: 210px;
-	width: 245px;
+	position: relative;
+	top: 10px;
+	left: 15px;
+	width: 180px;
 
 }
 .header-table {
