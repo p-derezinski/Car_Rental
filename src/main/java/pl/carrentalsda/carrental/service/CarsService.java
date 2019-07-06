@@ -23,6 +23,10 @@ public class CarsService {
         return carsRepository.findAllByYearBetween(2010, 2017);
     }
 
+    public List<Cars> getAllCarsFromYearsBetween(int yearFrom, int yearTo) {
+        return carsRepository.findAllByYearBetween(yearFrom, yearTo);
+    }
+
     public List<Cars> getAllCarsByBrand(String brand) {
         return carsRepository.findAllByBrand(brand);
     }

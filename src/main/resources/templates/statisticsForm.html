@@ -68,21 +68,30 @@
                 </table>
                 <table style="font-weight: bold; color: #f0f0f0">
                     <form th:action="@{/statisticsBrand}" th:method="post">
-
                         <tr>
                             <td style="width: 200px">Car brand:</td>
                             <td style="width: 150px"><input name="brand" type="text" class="form-control" placeholder="Car brand" required>
                             </td>
                         </tr>
-<!--                        <tr>-->
-<!--                            <td style="width: 200px">Age:</td>-->
-<!--                            <td style="width: 150px"><input th:field="*{age}" type="number" class="form-control" placeholder="Age" min="1" max="125" required></td>-->
-<!--                        </tr>-->
 
                         <tr><td> </td>
-                            <td style="width: 200px; padding: 0px"><button type="submit" class="button-log-reg">Register new user</button></td>
+                            <td style="width: 200px; padding: 0px"><button type="submit" class="button-log-reg">Search by brand</button></td>
+                        </tr>
+                    </form>
+
+                    <form th:action="@{/statisticsYears}" th:method="post">
+                        <tr>
+                            <td style="width: 200px">Year from:</td>
+                            <td style="width: 150px"><input name="yearFrom" type="number" class="form-control" placeholder="Year from" min="1900" max="2099" required></td>
+                        </tr>
+                        <tr>
+                            <td style="width: 200px">Year to:</td>
+                            <td style="width: 150px"><input name="yearTo" type="number" class="form-control" placeholder="Year to" min="1900" max="2099" required></td>
                         </tr>
 
+                        <tr><td> </td>
+                            <td style="width: 200px; padding: 0px"><button type="submit" class="button-log-reg">Search by years from / to</button></td>
+                        </tr>
                     </form>
 
                 </table>
@@ -91,10 +100,9 @@
 
                 <table th:if="${numberOfCars != null}"class="body-table">
                     <tr>
-                        <td style="width: 380px">The number of cars by selected brand:</td>
+                        <td style="width: 380px">The number of cars by selected search option:</td>
                         <td style="width: 15px" th:text="${numberOfCars}">Number of cars</td>
                     </tr>
-
                 </table>
 
 
