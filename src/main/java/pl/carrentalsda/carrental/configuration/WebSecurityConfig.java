@@ -61,12 +61,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-
+        auth
+                .inMemoryAuthentication()
                 .withUser("admin@admin.pl")
-
                 .password(bCryptPasswordEncoder.encode("admin12345"))
-
                 .roles("ADMIN");
         auth
                 .jdbcAuthentication()
