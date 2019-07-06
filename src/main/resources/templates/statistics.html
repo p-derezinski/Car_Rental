@@ -20,7 +20,7 @@
 <div id="container">
     <header style="background-color:rgba(105, 155, 186, 0.4)">
         <div class="width">
-            <h1><a href="/">Car Rental</a></h1>
+            <h1><a href="/">>>></a></h1>
             <nav>
                 <ul class="sf-menu dropdown">
                     <li><a th:href="@{/}">Home</a></li>
@@ -58,15 +58,19 @@
         <div class="width">
 
             <div class="intro-content" style="float: left; background-color: rgba(105, 155, 186, 0.9)">
-                <table style="color: #00264f; font-weight: bold; background-color: rgba(0, 96, 128, 0.7)">
+                <table class="header-table">
                     <tr>
                         <td>
-                            STATYSTYKI
+                            STATISTICS
                         </td>
-
+                    </tr>
+                    <tr>
+                        <td>
+                            Cars
+                        </td>
                     </tr>
                 </table>
-                <table style="font-weight: bold; color: #f0f0f0">
+                <table class="body-table">
                     <tr>
                         <td style="width: 380px">The number of cars available:</td>
                         <td style="width: 15px" th:text="${numberOfCars}">Number of cars</td>
@@ -96,7 +100,28 @@
                         <td style="width: 15px" th:text="${totalIncome}">Total income</td>
                     </tr>
 
-                    <table th:each="instance : ${userAndNumberOfReservations}">
+                    <table class="header-table">
+                        <tr>
+                            <td>
+                                Users
+                            </td>
+                        </tr>
+                    </table>
+                    <table class="body-table"  th:each="instance : ${userAndNumberOfReservations}">
+                        <tr class="header-table">
+                            <td>
+                                First name
+                            </td>
+                            <td>
+                                Last name
+                            </td>
+                            <td>
+                                E-mail
+                            </td>
+                            <td>
+                                No. of cars
+                            </td>
+                        </tr>
                         <tr>
                             <td th:text="${instance.key.getFirstname()}">Firstname</td>
                             <td th:text="${instance.key.getLastname()}">Lastname</td>
@@ -112,6 +137,9 @@
 </div>
 
 <div class="footer">&copy; Car Rental Company by PD&MT :)</div>
+<img class="logo" src="../img/logo.png">
+<div th:if="${auth != null}" th:text="${'Hello ' + auth.getPrincipal().getUsername()}" class="hello">Hello</div>
+
 <script type="text/javascript" src="../js/jquery.js"></script>
 <script type="text/javascript" src="../js/slider.js"></script>
 <script type="text/javascript" src="../js/superfish.js"></script>
