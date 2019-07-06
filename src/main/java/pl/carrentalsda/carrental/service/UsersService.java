@@ -23,7 +23,7 @@ public class UsersService {
         this.roleRepository = roleRepository;
     }
 
-    public void saveUser(UsersDto usersDto){
+    public void saveUser(UsersDto usersDto) {
         String encodedPassword = new BCryptPasswordEncoder().encode(usersDto.getPassword());
         Users user =
                 new Users(usersDto.getFirstname(),

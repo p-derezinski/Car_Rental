@@ -5,9 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Data
@@ -53,13 +51,4 @@ public class Users {
     public void addRole(Role role){
         this.roles.add(role);
     }
-
-
-//    // RELACJA 1:N
-//    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "users")
-//    private List<Reservation> reservations = new ArrayList<>();
-//
-//    public void addReservation(Reservation reservation){
-//        this.reservations.add(reservation);
-//    }
 }

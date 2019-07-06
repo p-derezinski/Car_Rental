@@ -15,12 +15,11 @@ import pl.carrentalsda.carrental.service.CarsService;
 import pl.carrentalsda.carrental.service.ReservationService;
 
 import javax.validation.Valid;
-import java.util.Arrays;
 
 @Controller
 public class ReservationController {
 
-    // pole do wstrzykniecia
+    // pola do wstrzyknięcia
     ReservationService reservationService;
     CarsService carsService;
 
@@ -31,11 +30,10 @@ public class ReservationController {
         this.carsService = carsService;
     }
 
+    // wejście na stronę wyświetlającą wybrany samochód
     @GetMapping("/reservation/{id}")
     public String processReservation(@PathVariable("id") Long id, Model model, Authentication auth){
         model.addAttribute("auth", auth);
-//        model.addAttribute("post", new PostDto());
-//        model.addAttribute("categories", Arrays.asList(CategoryEnum.values()));
 
         Cars carToView = carsService.getFirstCarById(id);
         model.addAttribute("carToView", carToView);
@@ -63,8 +61,6 @@ public class ReservationController {
                                      BindingResult bindingResult,
                                      Authentication auth,
                                      Model model) {
-//        Long car_id = car.getId();
-//        Cars carToUpdate = carsService.getFirstCarById(car_id);
         Cars carToUpdate = carsService.getFirstCarById(id);
         carToUpdate.setStatus(0);
         reservationService.updateCarInRepository(carToUpdate);

@@ -9,7 +9,9 @@ import java.util.List;
 
 @Service
 public class CarsService {
+
     CarsRepository carsRepository;
+
     @Autowired
     public CarsService(CarsRepository carsRepository) {
         this.carsRepository = carsRepository;
@@ -21,10 +23,6 @@ public class CarsService {
 
     public List<Cars> getAllCarsFromYearsBetween() {
         return carsRepository.findAllByYearBetween(2010, 2017);
-    }
-
-    public List<Cars> getAllCarsFromYearsBetween(int yearFrom, int yearTo) {
-        return carsRepository.findAllByYearBetween(yearFrom, yearTo);
     }
 
     public List<Cars> getAllCarsByBrand(String brand) {

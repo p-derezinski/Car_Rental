@@ -4,10 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -47,13 +44,4 @@ public class Cars {
         this.status = status;
         this.price = price;
     }
-
-
-//    // RELACJA 1:N
-//    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "cars")
-//    private List<Reservation> reservations = new ArrayList<>();
-//
-//    public void addReservation(Reservation reservation){
-//        this.reservations.add(reservation);
-//    }
 }
