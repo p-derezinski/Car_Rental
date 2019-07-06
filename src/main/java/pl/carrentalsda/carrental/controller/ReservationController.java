@@ -35,7 +35,7 @@ public class ReservationController {
     public String processReservation(@PathVariable("id") Long id, Model model, Authentication auth){
         model.addAttribute("auth", auth);
 
-        Cars carToView = carsService.getFirstCarById(id);
+        Cars carToView = carsService.getFirstById(id);
         model.addAttribute("carToView", carToView);
         return "reservation";
     }
@@ -49,7 +49,7 @@ public class ReservationController {
         String email = ((UserDetails)auth.getPrincipal()).getUsername();
         Long car_id = car.getId();
         reservationService.createReservation(email, car_id);
-        Cars carToUpdate = carsService.getFirstCarById(car_id);
+        Cars carToUpdate = carsService.getFirstById(car_id);
         carToUpdate.setStatus(1);
         reservationService.updateCarInRepository(carToUpdate);
         return "redirect:/";
@@ -61,7 +61,7 @@ public class ReservationController {
                                      BindingResult bindingResult,
                                      Authentication auth,
                                      Model model) {
-        Cars carToUpdate = carsService.getFirstCarById(id);
+        Cars carToUpdate = carsService.getFirstById(id);
         carToUpdate.setStatus(0);
         reservationService.updateCarInRepository(carToUpdate);
         return "redirect:/";

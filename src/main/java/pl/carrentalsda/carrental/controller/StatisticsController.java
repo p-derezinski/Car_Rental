@@ -39,19 +39,19 @@ public class StatisticsController {
     public String showStatistics(Model model, Authentication auth) {
         model.addAttribute("auth", auth);
 
-        List<Cars> listOfCars = carsService.getAllCars();
+        List<Cars> listOfCars = carsService.getAll();
         int numberOfCars = listOfCars.size();
         model.addAttribute("numberOfCars", numberOfCars);
 
-        List<Cars> listOfSelectedCars_2 = carsService.getAllCarsFromYearsBetween();
+        List<Cars> listOfSelectedCars_2 = carsService.getAllFromYearsBetween();
         int numberOfCars_2 = listOfSelectedCars_2.size();
         model.addAttribute("numberOfCars_2", numberOfCars_2);
 
-        List<Cars> listOfSelectedCars_3 = carsService.getAllCarsByBrand("Audi");
+        List<Cars> listOfSelectedCars_3 = carsService.getAllByBrand("Audi");
         int numberOfCars_3 = listOfSelectedCars_3.size();
         model.addAttribute("numberOfCars_3", numberOfCars_3);
 
-        List<Cars> listOfSelectedCars_4 = carsService.getAllCarsByBrand("Toyota");
+        List<Cars> listOfSelectedCars_4 = carsService.getAllByBrand("Toyota");
         int numberOfCars_4 = listOfSelectedCars_4.size();
         model.addAttribute("numberOfCars_4", numberOfCars_4);
 
@@ -98,7 +98,7 @@ public class StatisticsController {
         model.addAttribute("auth", auth);
 
         if (yearFrom <= yearTo) {
-            List<Cars> listOfSelectedCars = carsService.getAllCardByBrandAndYearsBetween(brand, yearFrom, yearTo);
+            List<Cars> listOfSelectedCars = carsService.getAllByBrandAndYearsBetween(brand, yearFrom, yearTo);
             int numberOfCars = listOfSelectedCars.size();
             model.addAttribute("numberOfCars", numberOfCars);
         } else {

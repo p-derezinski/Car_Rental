@@ -36,7 +36,7 @@ public class CarsController {
     public String getAllCars(Model model, Authentication auth) {
         model.addAttribute("auth", auth);
 
-        List<Cars> listOfCars = carsService.getAllCars();
+        List<Cars> listOfCars = carsService.getAll();
         model.addAttribute("listOfCars", listOfCars);
 
         isItAnEmployee(model, auth);
@@ -48,7 +48,7 @@ public class CarsController {
     public String getKrakowCars(Model model, Authentication auth) {
         model.addAttribute("auth", auth);
 
-        List<Cars> listOfKrakowCars = carsService.getAllCarsByBranch("krakow");
+        List<Cars> listOfKrakowCars = carsService.getAllByBranch("krakow");
         model.addAttribute("listOfCars", listOfKrakowCars);
 
         isItAnEmployee(model, auth);
@@ -60,7 +60,7 @@ public class CarsController {
     public String getPoznanCars(Model model, Authentication auth) {
         model.addAttribute("auth", auth);
 
-        List<Cars> listOfPoznanCars = carsService.getAllCarsByBranch("poznan");
+        List<Cars> listOfPoznanCars = carsService.getAllByBranch("poznan");
         model.addAttribute("listOfCars", listOfPoznanCars);
 
         isItAnEmployee(model, auth);
@@ -72,7 +72,7 @@ public class CarsController {
     public String getGdanskCars(Model model, Authentication auth) {
         model.addAttribute("auth", auth);
 
-        List<Cars> listOfGdanskCars = carsService.getAllCarsByBranch("gdansk");
+        List<Cars> listOfGdanskCars = carsService.getAllByBranch("gdansk");
         model.addAttribute("listOfCars", listOfGdanskCars);
 
         isItAnEmployee(model, auth);
@@ -84,7 +84,7 @@ public class CarsController {
     public String getWarszawaCars(Model model, Authentication auth) {
         model.addAttribute("auth", auth);
 
-        List<Cars> listOfWarszawaCars = carsService.getAllCarsByBranch("warszawa");
+        List<Cars> listOfWarszawaCars = carsService.getAllByBranch("warszawa");
         model.addAttribute("listOfCars", listOfWarszawaCars);
 
         isItAnEmployee(model, auth);
