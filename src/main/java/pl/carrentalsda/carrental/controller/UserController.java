@@ -71,10 +71,10 @@ public class UserController {
         model.addAttribute("auth", auth);
 
         String email = ((UserDetails)auth.getPrincipal()).getUsername();
-        Users loggedUser = usersService.getFirstUserByEmail(email);
+        Users loggedUser = usersService.getFirstByEmail(email);
         model.addAttribute("loggedUser", loggedUser);
 
-        List<Reservation> listOfReservations = reservationService.getAllReservationsByUser(loggedUser);
+        List<Reservation> listOfReservations = reservationService.getAllByUser(loggedUser);
         model.addAttribute("listOfReservations", listOfReservations);
 
         return "client";

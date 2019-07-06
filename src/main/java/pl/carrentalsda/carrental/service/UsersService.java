@@ -40,11 +40,11 @@ public class UsersService {
         usersRepository.save(user);
     }
 
-    public List<Users> getAllUsers() {
+    public List<Users> getAll() {
         return usersRepository.findAll();
     }
 
-    public Users getFirstUserByEmail(String email) {
+    public Users getFirstByEmail(String email) {
         return usersRepository.findFirstByEmail(email);
     }
 

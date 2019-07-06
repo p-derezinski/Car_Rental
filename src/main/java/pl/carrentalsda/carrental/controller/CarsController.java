@@ -95,7 +95,7 @@ public class CarsController {
     private void isItAnEmployee(Model model, Authentication auth) {
         if (auth != null) {
             String email = ((UserDetails) auth.getPrincipal()).getUsername();
-            Users loggedUser = usersService.getFirstUserByEmail(email);
+            Users loggedUser = usersService.getFirstByEmail(email);
             Role userRole = usersService.getRole(2L);
             if (loggedUser.getRoles().contains(userRole)) {
                 model.addAttribute("employee", true);

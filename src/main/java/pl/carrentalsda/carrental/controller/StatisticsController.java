@@ -55,12 +55,12 @@ public class StatisticsController {
         int numberOfCars_4 = listOfSelectedCars_4.size();
         model.addAttribute("numberOfCars_4", numberOfCars_4);
 
-        List<Users> listOfUsers = usersService.getAllUsers();
+        List<Users> listOfUsers = usersService.getAll();
         model.addAttribute("listOfUsers", listOfUsers);
         int numberOfUsers = listOfUsers.size();
         model.addAttribute("numberOfUsers", numberOfUsers);
 
-        List<Reservation> listOfReservations = reservationService.getAllReservations();
+        List<Reservation> listOfReservations = reservationService.getAll();
         int numberOfReservations = listOfReservations.size();
         model.addAttribute("numberOfReservations", numberOfReservations);
         int totalIncome = 0;
@@ -71,7 +71,7 @@ public class StatisticsController {
 
         Map<Users, Integer> userAndNumberOfReservations = new HashMap<>();
         for (Users user : listOfUsers) {
-            List<Reservation> listOfUserReservations = reservationService.getAllReservationsByUser(user);
+            List<Reservation> listOfUserReservations = reservationService.getAllByUser(user);
             int numberOfUserReservations = listOfUserReservations.size();
             if (numberOfUserReservations > 0) {
                 userAndNumberOfReservations.put(user, numberOfUserReservations);
