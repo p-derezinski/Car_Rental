@@ -136,6 +136,10 @@
     </div>
 </div>
 
+<div>
+    <a th:href="@{/statisticsForm}">Statistics form</a>
+</div>
+
 <div class="footer">&copy; Car Rental Company by PD&MT :)</div>
 <img class="logo" src="../img/logo.png">
 <div th:if="${auth != null}" th:text="${'Hello ' + auth.getPrincipal().getUsername()}" class="hello">Hello</div>
