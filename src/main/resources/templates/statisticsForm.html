@@ -7,6 +7,7 @@
     <title>Car Rental</title>
 
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/lumen/bootstrap.min.css">
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/reset.css" type="text/css"/>
     <link rel="stylesheet" href="../css/styles.css" type="text/css"/>
@@ -20,17 +21,17 @@
 <div id="container">
     <header style="background-color:rgba(105, 155, 186, 0.4)">
         <div class="width">
-            <h1><a href="/">Car Rental</a></h1>
+            <h1><img class="logo" src="../img/logo.png"></h1>
             <nav>
                 <ul class="sf-menu dropdown">
                     <li><a th:href="@{/}">Home</a></li>
                     <li>
                         <a href="#">Branches</a>
                         <ul>
-                            <li><a href="#">Kraków</a></li>
-                            <li><a href="#">Poznań</a></li>
-                            <li><a href="#">Gdańsk</a></li>
-                            <li><a href="#">Warszawa</a></li>
+                            <li><a th:href="@{/krakow}"  id="krakow">Kraków</a></li>
+                            <li><a th:href="@{/poznan}" id="poznan">Poznań</a></li>
+                            <li><a th:href="@{/gdansk}" id="gdansk">Gdańsk</a></li>
+                            <li><a th:href="@{/warszawa}" id="warszawa">Warszawa</a></li>
                         </ul>
                     </li>
                     <li class="selected"><a th:href="@{/statistics}">Statistics</a></li>
@@ -61,38 +62,13 @@
                 <table style="color: #00264f; font-weight: bold; background-color: rgba(0, 96, 128, 0.7)">
                     <tr>
                         <td>
-                            STATYSTYKI
+                            ADVANCED STATISTICS
                         </td>
 
                     </tr>
                 </table>
                 <table style="font-weight: bold; color: #f0f0f0">
-<!--                    <form th:action="@{/statisticsBrand}" th:method="post">-->
-<!--                        <tr>-->
-<!--                            <td style="width: 200px">Car brand:</td>-->
-<!--                            <td style="width: 150px"><input name="brand" type="text" class="form-control" placeholder="Car brand" required>-->
-<!--                            </td>-->
-<!--                        </tr>-->
 
-<!--                        <tr><td> </td>-->
-<!--                            <td style="width: 200px; padding: 0px"><button type="submit" class="button-log-reg">Search by brand</button></td>-->
-<!--                        </tr>-->
-<!--                    </form>-->
-
-<!--                    <form th:action="@{/statisticsYears}" th:method="post">-->
-<!--                        <tr>-->
-<!--                            <td style="width: 200px">Year from:</td>-->
-<!--                            <td style="width: 150px"><input name="yearFrom" type="number" class="form-control" placeholder="Year from" min="1900" max="2099" required></td>-->
-<!--                        </tr>-->
-<!--                        <tr>-->
-<!--                            <td style="width: 200px">Year to:</td>-->
-<!--                            <td style="width: 150px"><input name="yearTo" type="number" class="form-control" placeholder="Year to" min="1900" max="2099" required></td>-->
-<!--                        </tr>-->
-
-<!--                        <tr><td> </td>-->
-<!--                            <td style="width: 200px; padding: 0px"><button type="submit" class="button-log-reg">Search by years from / to</button></td>-->
-<!--                        </tr>-->
-<!--                    </form>-->
 
                     <form th:action="@{/statisticsSearch}" th:method="post">
                         <tr>
@@ -110,15 +86,15 @@
                         </tr>
 
                         <tr><td> </td>
-                            <td style="width: 200px; padding: 0px"><button type="submit" class="button-log-reg">Search</button></td>
+                            <td style="width: 200px; padding: 0px"><button type="submit" class="button-log-reg" style="position: relative; top: 1px">Search</button></td>
                         </tr>
                     </form>
 
                 </table>
 
 
-
                 <table th:if="${numberOfCars != null}"class="body-table">
+                    <hr>
                     <tr>
                         <td style="width: 380px">The number of cars by selected search option:</td>
                         <td style="width: 15px" th:text="${numberOfCars}">Number of cars</td>
