@@ -19,6 +19,8 @@ public interface CarsRepository extends JpaRepository<Cars, Long> {
     List<Cars> findAllByBrand(String brand);
 
     List<Cars> findAllByBranch(String branch);
+
+    List<Cars> findAllByBrandAndYearBetween(String brand, int low, int high);
 }
 
 
