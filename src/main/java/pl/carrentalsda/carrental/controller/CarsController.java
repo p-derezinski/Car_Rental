@@ -39,7 +39,7 @@ public class CarsController {
         List<Cars> listOfCars = carsService.getAll();
         model.addAttribute("listOfCars", listOfCars);
 
-        isItAnEmployee(model, auth);
+        addAttributeIfEmployee(model, auth);
 
         return "index";
     }
@@ -51,7 +51,7 @@ public class CarsController {
         List<Cars> listOfKrakowCars = carsService.getAllByBranch("krakow");
         model.addAttribute("listOfCars", listOfKrakowCars);
 
-        isItAnEmployee(model, auth);
+        addAttributeIfEmployee(model, auth);
 
         return "index";
     }
@@ -63,7 +63,7 @@ public class CarsController {
         List<Cars> listOfPoznanCars = carsService.getAllByBranch("poznan");
         model.addAttribute("listOfCars", listOfPoznanCars);
 
-        isItAnEmployee(model, auth);
+        addAttributeIfEmployee(model, auth);
 
         return "index";
     }
@@ -75,7 +75,7 @@ public class CarsController {
         List<Cars> listOfGdanskCars = carsService.getAllByBranch("gdansk");
         model.addAttribute("listOfCars", listOfGdanskCars);
 
-        isItAnEmployee(model, auth);
+        addAttributeIfEmployee(model, auth);
 
         return "index";
     }
@@ -87,12 +87,12 @@ public class CarsController {
         List<Cars> listOfWarszawaCars = carsService.getAllByBranch("warszawa");
         model.addAttribute("listOfCars", listOfWarszawaCars);
 
-        isItAnEmployee(model, auth);
+        addAttributeIfEmployee(model, auth);
 
         return "index";
     }
 
-    private void isItAnEmployee(Model model, Authentication auth) {
+    private void addAttributeIfEmployee(Model model, Authentication auth) {
         if (auth != null) {
             String email = ((UserDetails) auth.getPrincipal()).getUsername();
             Users loggedUser = usersService.getFirstByEmail(email);

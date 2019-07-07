@@ -34,7 +34,7 @@ public class UserController {
 
     // wejście na stronę rejestracji
     @GetMapping("/register")
-    public String register(Model model){
+    public String register(Model model) {
         model.addAttribute("users", new UsersDto());
         return "register";
     }
@@ -42,7 +42,7 @@ public class UserController {
     // obsługa wysłanego formularza
     @PostMapping("/register")
     public String register(@ModelAttribute("users") @Valid UsersDto usersDto,
-                           BindingResult bindingResult){
+                           BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "register";
         }
@@ -52,8 +52,7 @@ public class UserController {
 
     // wejście na stronę logowania
     @GetMapping("/login")
-    public String login(Model model){
-//        model.addAttribute("user", new UserDto());
+    public String login() {
         return "login";
     }
 
@@ -67,7 +66,7 @@ public class UserController {
 
     // wejście na stronę klienta
     @GetMapping("/clientPage")
-    public String clientPage(Model model, Authentication auth){
+    public String clientPage(Model model, Authentication auth) {
         model.addAttribute("auth", auth);
 
         String email = ((UserDetails)auth.getPrincipal()).getUsername();

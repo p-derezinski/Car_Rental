@@ -10,7 +10,7 @@ public class ContactController {
 
     // wejście na stronę kontakt
     @GetMapping("/contact")
-    public String contact(Model model, Authentication auth){
+    public String contact(Model model, Authentication auth) {
         model.addAttribute("auth", auth);
         return "contact";
     }
