@@ -21,14 +21,6 @@ public class CarsService {
         return carsRepository.findAll();
     }
 
-    public List<Cars> getAllFromYearsBetween() {
-        return carsRepository.findAllByYearBetween(2010, 2017);
-    }
-
-    public List<Cars> getAllByBrand(String brand) {
-        return carsRepository.findAllByBrand(brand);
-    }
-
     public List<Cars> getAllByBranch(String branch) {
         return carsRepository.findAllByBranch(branch);
     }

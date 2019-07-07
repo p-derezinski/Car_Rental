@@ -47,9 +47,9 @@ public class ReservationController {
     public String processReservation(@ModelAttribute("carToView") @Valid Cars car,
                                      Authentication auth) {
         String email = ((UserDetails)auth.getPrincipal()).getUsername();
-        Long car_id = car.getId();
-        reservationService.createReservation(email, car_id);
-        Cars carToUpdate = carsService.getFirstById(car_id);
+        Long carId = car.getId();
+        reservationService.createReservation(email, carId);
+        Cars carToUpdate = carsService.getFirstById(carId);
         carToUpdate.setStatus(CAR_BOOKED);
         reservationService.updateCarInRepository(carToUpdate);
         return "redirect:/";
