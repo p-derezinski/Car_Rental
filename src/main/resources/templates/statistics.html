@@ -81,18 +81,6 @@
                         <td style="width: 15px" th:text="${numberOfCars}">Number of cars</td>
                     </tr>
                     <tr>
-                        <td style="width: 380px">The number of cars available (2010 -2017):</td>
-                        <td style="width: 15px" th:text="${numberOfCars_2}">Number of cars 2010 -2017</td>
-                    </tr>
-                    <tr>
-                        <td style="width: 380px">The number of Audi cars:</td>
-                        <td style="width: 15px" th:text="${numberOfCars_3}">Number of Audi cars</td>
-                    </tr>
-                    <tr>
-                        <td style="width: 380px">The number of Toyota cars:</td>
-                        <td style="width: 15px" th:text="${numberOfCars_4}">Number of Toyota cars</td>
-                    </tr>
-                    <tr>
                         <td style="width: 380px">The number of users:</td>
                         <td style="width: 15px" th:text="${numberOfUsers}">Number of users</td>
                     </tr>
@@ -130,9 +118,9 @@
                     </table>
                     <table class="body-table" th:each="instance : ${userAndNumberOfReservations}">
                         <tr>
-                            <td th:text="${instance.key.getFirstname()}">Firstname</td>
-                            <td th:text="${instance.key.getLastname()}">Lastname</td>
-                            <td th:text="${instance.key.getEmail()}">Email</td>
+                            <td th:text="${instance.key.firstname}">Firstname</td>
+                            <td th:text="${instance.key.lastname}">Lastname</td>
+                            <td th:text="${instance.key.email}">Email</td>
                             <td th:text="${instance.value}">Number</td>
                         </tr>
                     </table>
