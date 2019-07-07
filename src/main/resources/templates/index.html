@@ -49,7 +49,7 @@
                     <li><a th:if="${auth != null}" th:href="@{/logout}">Logout</a></li>
                 </ul>
                 <div class="clear"></div>
-                <div class="hello" th:if="${auth != null}" th:text="${'Hello ' + auth.getPrincipal().getUsername()}">Hello</div>
+                <div class="hello" th:if="${auth != null}" th:text="${'Hello ' + auth.principal.username}">Hello</div>
 
             </nav>
         </div>
@@ -110,20 +110,20 @@
                     </thead>
                     <tbody id="filterTable" style="color: #00264d;" th:each="cars : ${listOfCars}">
                     <tr>
-                        <td th:text="${cars.getBrand()}">Brand</td>
-                        <td th:text="${cars.getModel()}">Model</td>
-                        <td th:text="${cars.getType()}">Type</td>
-                        <td th:text="${cars.getYear()}">Year</td>
-                        <td th:text="${cars.getColor()}">Color</td>
-                        <td th:text="${cars.getMileage()}">Mileage</td>
-                        <td th:text="${cars.getBranch()}">Branch</td>
+                        <td th:text="${cars.brand}">Brand</td>
+                        <td th:text="${cars.model}">Model</td>
+                        <td th:text="${cars.type}">Type</td>
+                        <td th:text="${cars.year}">Year</td>
+                        <td th:text="${cars.color}">Color</td>
+                        <td th:text="${cars.mileage}">Mileage</td>
+                        <td th:text="${cars.branch}">Branch</td>
 
-                        <td th:switch="${cars.getStatus()}">
+                        <td th:switch="${cars.status}">
                             <span th:case="0" style="color: limegreen; font-weight: bold">Available</span>
                             <span th:case="1" style="color: red; font-weight: bold">Rented</span>
                         </td>
-                        <td th:text="${cars.getPrice() + ' PLN'}">Price</td>
-                        <td th:switch="${cars.getStatus()}">
+                        <td th:text="${cars.price + ' PLN'}">Price</td>
+                        <td th:switch="${cars.status}">
                             <a th:href="@{'/reservation/' + ${cars.id}}">
                                 <button th:case="0"
                                         style="background-color: #33cc00; width: 70px; border-color: #208000; font-weight: bold">
