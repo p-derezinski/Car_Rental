@@ -17,27 +17,19 @@ public class CarsService {
         this.carsRepository = carsRepository;
     }
 
-    public List<Cars> getAllCars() {
+    public List<Cars> getAll() {
         return carsRepository.findAll();
     }
 
-    public List<Cars> getAllCarsFromYearsBetween() {
-        return carsRepository.findAllByYearBetween(2010, 2017);
-    }
-
-    public List<Cars> getAllCarsByBrand(String brand) {
-        return carsRepository.findAllByBrand(brand);
-    }
-
-    public List<Cars> getAllCarsByBranch(String branch) {
+    public List<Cars> getAllByBranch(String branch) {
         return carsRepository.findAllByBranch(branch);
     }
 
-    public Cars getFirstCarById(Long id) {
+    public Cars getFirstById(Long id) {
         return carsRepository.findFirstById(id);
     }
 
-    public List<Cars> getAllCardByBrandAndYearsBetween(String brand, int yearFrom, int yearTo) {
+    public List<Cars> getAllByBrandAndYearsBetween(String brand, int yearFrom, int yearTo) {
         if (brand.equals("empty")) {
             return carsRepository.findAllByYearBetween(yearFrom, yearTo);
         }

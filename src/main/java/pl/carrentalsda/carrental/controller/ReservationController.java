@@ -5,7 +5,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,12 +29,15 @@ public class ReservationController {
         this.carsService = carsService;
     }
 
+    private static final int CAR_AVAILABLE = 0;
+    private static final int CAR_BOOKED = 1;
+
     // wejście na stronę wyświetlającą wybrany samochód
     @GetMapping("/reservation/{id}")
-    public String processReservation(@PathVariable("id") Long id, Model model, Authentication auth){
+    public String processReservation(@PathVariable("id") Long id, Model model, Authentication auth) {
         model.addAttribute("auth", auth);
 
-        Cars carToView = carsService.getFirstCarById(id);
+        Cars carToView = carsService.getFirstById(id);
         model.addAttribute("carToView", carToView);
         return "reservation";
     }
@@ -43,26 +45,21 @@ public class ReservationController {
     // obsługa kliknięcia potwierdzenia rezerwacji samochodu
     @PostMapping("/reservation")
     public String processReservation(@ModelAttribute("carToView") @Valid Cars car,
-                                     BindingResult bindingResult,
-                                     Authentication auth,
-                                     Model model) {
+                                     Authentication auth) {
         String email = ((UserDetails)auth.getPrincipal()).getUsername();
-        Long car_id = car.getId();
-        reservationService.createReservation(email, car_id);
-        Cars carToUpdate = carsService.getFirstCarById(car_id);
-        carToUpdate.setStatus(1);
+        Long carId = car.getId();
+        reservationService.createReservation(email, carId);
+        Cars carToUpdate = carsService.getFirstById(carId);
+        carToUpdate.setStatus(CAR_BOOKED);
         reservationService.updateCarInRepository(carToUpdate);
         return "redirect:/";
     }
 
     // obsługa zwrotu auta przez pracownika
     @PostMapping("/return/{id}")
-    public String processReturn(@PathVariable("id") Long id, @ModelAttribute("cars") @Valid Cars car,
-                                     BindingResult bindingResult,
-                                     Authentication auth,
-                                     Model model) {
-        Cars carToUpdate = carsService.getFirstCarById(id);
-        carToUpdate.setStatus(0);
+    public String processReturn(@PathVariable("id") Long id, @ModelAttribute("cars") @Valid Cars car) {
+        Cars carToUpdate = carsService.getFirstById(id);
+        carToUpdate.setStatus(CAR_AVAILABLE);
         reservationService.updateCarInRepository(carToUpdate);
         return "redirect:/";
     }

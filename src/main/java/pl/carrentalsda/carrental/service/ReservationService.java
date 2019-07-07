@@ -38,11 +38,11 @@ public class ReservationService {
         carsRepository.save(car);
     }
 
-    public List<Reservation> getAllReservationsByUser(Users user) {
-        return reservationRepository.findAllByUser(user);
+    public List<Reservation> getAll() {
+        return reservationRepository.findAll();
     }
 
-    public List<Reservation> getAllReservations() {
-        return reservationRepository.findAll();
+    public List<Reservation> getAllByUser(Users user) {
+        return reservationRepository.findAllByUser(user);
     }
 }

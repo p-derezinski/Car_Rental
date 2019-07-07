@@ -39,30 +39,19 @@ public class StatisticsController {
     public String showStatistics(Model model, Authentication auth) {
         model.addAttribute("auth", auth);
 
-        List<Cars> listOfCars = carsService.getAllCars();
+        List<Cars> listOfCars = carsService.getAll();
         int numberOfCars = listOfCars.size();
         model.addAttribute("numberOfCars", numberOfCars);
 
-        List<Cars> listOfSelectedCars_2 = carsService.getAllCarsFromYearsBetween();
-        int numberOfCars_2 = listOfSelectedCars_2.size();
-        model.addAttribute("numberOfCars_2", numberOfCars_2);
-
-        List<Cars> listOfSelectedCars_3 = carsService.getAllCarsByBrand("Audi");
-        int numberOfCars_3 = listOfSelectedCars_3.size();
-        model.addAttribute("numberOfCars_3", numberOfCars_3);
-
-        List<Cars> listOfSelectedCars_4 = carsService.getAllCarsByBrand("Toyota");
-        int numberOfCars_4 = listOfSelectedCars_4.size();
-        model.addAttribute("numberOfCars_4", numberOfCars_4);
-
-        List<Users> listOfUsers = usersService.getAllUsers();
+        List<Users> listOfUsers = usersService.getAll();
         model.addAttribute("listOfUsers", listOfUsers);
         int numberOfUsers = listOfUsers.size();
         model.addAttribute("numberOfUsers", numberOfUsers);
 
-        List<Reservation> listOfReservations = reservationService.getAllReservations();
+        List<Reservation> listOfReservations = reservationService.getAll();
         int numberOfReservations = listOfReservations.size();
         model.addAttribute("numberOfReservations", numberOfReservations);
+
         int totalIncome = 0;
         for (Reservation reservation : listOfReservations) {
             totalIncome += reservation.getCars().getPrice();
@@ -71,7 +60,7 @@ public class StatisticsController {
 
         Map<Users, Integer> userAndNumberOfReservations = new HashMap<>();
         for (Users user : listOfUsers) {
-            List<Reservation> listOfUserReservations = reservationService.getAllReservationsByUser(user);
+            List<Reservation> listOfUserReservations = reservationService.getAllByUser(user);
             int numberOfUserReservations = listOfUserReservations.size();
             if (numberOfUserReservations > 0) {
                 userAndNumberOfReservations.put(user, numberOfUserReservations);
@@ -98,7 +87,7 @@ public class StatisticsController {
         model.addAttribute("auth", auth);
 
         if (yearFrom <= yearTo) {
-            List<Cars> listOfSelectedCars = carsService.getAllCardByBrandAndYearsBetween(brand, yearFrom, yearTo);
+            List<Cars> listOfSelectedCars = carsService.getAllByBrandAndYearsBetween(brand, yearFrom, yearTo);
             int numberOfCars = listOfSelectedCars.size();
             model.addAttribute("numberOfCars", numberOfCars);
         } else {
